@@ -1,12 +1,12 @@
 # Proyecto SGI
 
-Este proyecto se ha creado con **[Vite](https://vitejs.dev/)** y **[React](https://es.react.dev/)**.
-Vite proporciona un entorno de desarrollo rápido y eficiente, mientras que React facilita la construcción de interfaces de usuario modernas y dinámicas.
+Este proyecto utiliza **[Vite](https://vite.dev/guide/)** como entorno de desarrollo, **[React](https://es.react.dev/)** para la construcción de interfaces modernas y dinámicas, y **[TailwindCSS](https://tailwindcss.com/)** como framework de utilidades para el diseño y estilos.
+
+Actualmente, parte del código está implementado en HTML puro, almacenado en la carpeta html/. Esa carpeta se usa como base de referencia temporal. Una vez que el contenido sea migrado a componentes en **JSX** (React), la carpeta html/ será eliminada del proyecto.
 
 ## 🚀 Requisitos
 
 * Node.js >= 16
-* npm o yarn
 
 ## ⚙️ Instalación
 
