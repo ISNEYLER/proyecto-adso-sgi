@@ -36,16 +36,13 @@ npm run build
 yarn build
 ```
 
-<!-- ## 📂 Estructura básica
+## 📂 Estructura del proyecto
 
 ```
+html/ # Prototipo en HTML puro (se eliminará tras migrar a JSX)
 src/
  ├─ assets/        # Archivos estáticos (imágenes, estilos, etc.)
  ├─ components/    # Componentes reutilizables de React
  ├─ App.jsx        # Componente principal
  └─ main.jsx       # Punto de entrada
 ```
-
-## 📜 Licencia
-
-Este proyecto se distribuye bajo la licencia MIT. -->
