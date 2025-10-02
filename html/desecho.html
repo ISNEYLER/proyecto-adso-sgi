@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajuste de inventario</title>
+    <link rel="stylesheet" href="assets/css/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body class="bg-secondary-subtle">
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-light bg-primary">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">LOGO</a>
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link">Productos</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Operaciones</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="trasferencias.html" class="dropdown-item">Transferencias</a></li>
+                            <li><a href="ajuste-inventario.html" class="dropdown-item">Ajuste de Inventario</a></li>
+                            <li><a href="desecho.html" class="dropdown-item">Desecho</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">Configuración</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">PERFIL</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <div class="aja">
+            <div class="d-flex justify-content-between p-4 bg-body">
+                <div class="d-flex flex-column">
+                    <H4>Desecho</H4>
+                </div>
+                <div>
+                    <a class="btn btn-success btn-sm" href="desecho/crear-desecho.html">Crear desecho</a>
+                    <input type="email" class="form-control-sm" id="exampleFormControlInput1" placeholder="Buscar">
+                </div>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr class="table-dark">
+                            <th>ID</th>
+                            <th>Fecha</th>
+                            <th>Producto</th>
+                            <th>Cantidad</th>
+                            <th>Ubicacion Origen</th>
+                            <th>Ubicacion Desecho</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>D001</td>
+                            <td>01/01/2025</td>
+                            <td>20</td>
+                            <td>30</td>
+                            <td>B37</td>
+                            <td>DES-01</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+</body>
+<script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.js"></script>
+<script src="assets/js/bootstrap/bootstrap.min.js"></script>
+
+</html>
