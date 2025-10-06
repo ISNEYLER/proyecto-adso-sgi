@@ -1,38 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo($title); ?></title>
     <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.min.css">
 </head>
 <body>
-    <nav class="grid grid-cols-[auto_auto_1fr_auto] gap-5 p-4 bg-pink-500">
-        <div class="flex">
-            <a href="#" class="text-lg font-bold">Inventario</a>
-        </div>
-        <div class="drop">
-            <a href="#" class="text-sm">Dashboard</a>
-        </div>
-        <div class="flex">
-            <div class="drop px-4">
-                <a href="#" class="text-sm">Operaciones</a>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-light bg-primary">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">LOGO</a>
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">Productos</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Operaciones</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#" class="dropdown-item">Transferencias</a></li>
+                            <li><a href="#" class="dropdown-item">Ajuste de Inventario</a></li>
+                            <li><a href="#" class="dropdown-item">Desecho</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">Configuración</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">PERFIL</a>
+                    </li>
+                </ul>
             </div>
-            <div class="drop px-4">
-                <a href="#" class="text-sm">Productos</a>
-            </div>
-            <div class="drop px-4">
-                <a href="#" class="text-sm">Ajustes</a>
-            </div>
-        </div>
-        <div class="flex">
-            <a href="#" class="text-sm">Inventario</a>
-        </div>
-    </nav>
+        </nav>
+    </header>
+
 
     <?php echo($this->renderSection("content")); ?>
 
-    <?php echo($this->renderSection("scripts")); ?>
-    
 </body>
+<script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.js"></script>
+<script src="../lib/bootstrap/js/bootstrap.min.js"></script>
+<?php echo($this->renderSection("scripts")); ?>
 </html>
