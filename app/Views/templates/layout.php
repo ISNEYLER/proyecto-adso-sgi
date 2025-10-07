@@ -41,7 +41,7 @@
     <?php echo($this->renderSection("content")); ?>
 
 </body>
-<script src="<?php base_url('lib/popper/popper.min.js') ?>"></script>
-<script src="<?php base_url('lib/bootstrap/js/bootstrap.min.js') ?>"></script>
+<script src="<?php echo base_url('lib/popper/popper.min.js'); ?>"></script>
+<script src="<?php echo base_url('lib/bootstrap/js/bootstrap.min.js'); ?>"></script>
 <?php echo($this->renderSection("scripts")); ?>
 </html>
