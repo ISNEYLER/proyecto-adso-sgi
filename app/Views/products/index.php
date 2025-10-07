@@ -3,18 +3,18 @@
 <?php echo $this->section('content'); ?>
   <div>
     <div class="d-flex justify-content-between p-4 bg-body">
-      <div class="d-flex flex-column">
+      <div class="d-flex">
         <H4>Productos</H4>
       </div>
-      <div>
-        <a class="btn btn-success btn-sm" href="producto/crear-producto.html">Añadir Producto</a>
-      <input type="email" class="form-control-sm" id="exampleFormControlInput1" placeholder="Buscar">
+      <div class="d-flex gap-2">
+        <a class="btn btn-success btn" href="<?= base_url('products/create')?>">Añadir Producto</a>
+        <input type="email" class="form-control form-control-sm w-auto" id="exampleFormControlInput1" placeholder="Buscar">
     </div>
   </div>
-  <div class="table-responsive">
+  <div class="table-responsive px-4 py-4">
     <table class="table table-striped">
       <thead>
-        <tr class="table-dark">
+        <tr class="table-dark center">
           <th>Producto</th>
           <th>SKU</th>
           <th>Cod Barras</th>
@@ -24,13 +24,17 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>Barra de sonido Hisense HS1000</td>
-          <td>73261439</td>
-          <td>73261439</td>
-          <td>$ 329.000</td>
-          <td>$ 200.000</td>
-          <td>20</td>
-        </tr>
+        <?php foreach($products as $producto): ?>
+          <tr data-href="<?= base_url('products/' . $producto->id); ?>">
+            <td><?= esc($producto->nombre); ?></td>
+            <td><?= $producto->sku; ?></td>
+            <td><?= $producto->codigo_barras; ?></td>
+            <td><?= $producto->valor; ?></td>
+            <td><?= $producto->costo; ?></td>
+            <td><?= $producto->valor; ?></td>
+          </tr>
+        <?php endforeach; ?>
+      </tbody>
+    </table>
   </div>
 <?php echo $this->endSection(); ?>
