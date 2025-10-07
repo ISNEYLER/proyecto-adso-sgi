@@ -7,7 +7,7 @@
         <H4>Movimientos</H4>
       </div>
       <div class="d-flex gap-2">
-        <a class="btn btn-success btn" href="<?= base_url('products/create')?>">Crear Movimiento</a>
+        <a class="btn btn-success btn" href="<?= base_url('movements/create')?>">Crear Movimiento</a>
         <input type="email" class="form-control form-control-sm w-auto" id="exampleFormControlInput1" placeholder="Buscar">
     </div>
   </div>
