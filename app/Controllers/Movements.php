@@ -14,4 +14,10 @@ class Movements extends BaseController
         $data = ["title"=> "Movimientos", "movements" => $result];
         return view('movements/index', $data);
     }
+
+    public function create(): string
+    {
+        $data = ["title"=> "Crear Movimiento"];
+        return view('movements/create', $data);
+    }
 }

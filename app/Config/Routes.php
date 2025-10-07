@@ -11,6 +11,7 @@ $routes->get('dashboard', 'Dashboard::index');
 $routes->get('products', 'Products::index');
 $routes->get('products/create', 'Products::create');
 $routes->get('movements', 'Movements::index');
+$routes->get('movements/create', 'Movements::create');
 $routes->get('disposal', 'Disposal::index');
 $routes->get('inventory_adj', 'InventoryAdjustment::index');
 $routes->get('settings', 'Settings::index');

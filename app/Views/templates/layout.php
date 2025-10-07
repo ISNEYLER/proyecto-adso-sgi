@@ -7,9 +7,9 @@
     <link rel="stylesheet" href="<?= base_url('css/styles.css') ?>">
     <link rel="stylesheet" href="<?= base_url('lib/bootstrap/css/bootstrap.min.css') ?>">
 </head>
-<body>
+<body class="bg-light">
     <header>
-        <nav class="navbar navbar-expand-sm navbar-light bg-primary">
+        <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
             <div class="container-fluid">
                 <a class="navbar-brand" href="<?= base_url('/')?>">LOGO</a>
                 <ul class="navbar-nav me-auto">

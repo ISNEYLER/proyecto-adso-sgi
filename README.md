@@ -24,6 +24,7 @@ app/
  └── Config/           # Archivos de configuración del framework
 public/
  ├── css/              # Hojas de estilo personalizadas
+ ├── lib/              # Librerias necesarias
  ├── js/               # Scripts JavaScript
  └── index.php         # Punto de entrada de la aplicación
 writable/              # Archivos generados por el sistema (logs, caché, etc.)
@@ -55,7 +56,7 @@ composer.json          # Configuración de dependencias
    - Modifica las variables necesarias (base de datos, entorno, etc.):
      ```bash
      CI_ENVIRONMENT = development
-     app.baseURL = 'http://localhost/tu-proyecto/public'
+     app.baseURL = 'http://localhost/proyecto-adso-sgi/public'
      database.default.hostname = localhost
      database.default.database = tu_base_de_datos
      database.default.username = usuario
@@ -64,5 +65,5 @@ composer.json          # Configuración de dependencias
      ```
 
 4. **Ejecutar el proyecto en xamppp**
-Inicia Apache y MySQL en xammpp, luego dirigitete a `http://localhost/proyecto-adso/public`
+Inicia Apache y MySQL en xammpp, luego dirigitete a `http://localhost/proyecto-adso-sgi/public`
 ---
