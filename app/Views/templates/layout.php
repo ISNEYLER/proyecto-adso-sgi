@@ -20,7 +20,7 @@
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Operaciones</a>
                         <ul class="dropdown-menu">
                             <li><a href="<?= base_url('movements')?>" class="dropdown-item">Movimientos</a></li>
-                            <li><a href="#" class="dropdown-item">Ajuste de Inventario</a></li>
+                            <li><a href="<?= base_url('inventory_adjustment')?>" class="dropdown-item">Ajuste de Inventario</a></li>
                             <li><a href="#" class="dropdown-item">Desecho</a></li>
                         </ul>
                     </li>

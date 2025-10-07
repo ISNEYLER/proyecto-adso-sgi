@@ -6,6 +6,7 @@ class InventoryAdjustment extends BaseController
 {
     public function index(): string
     {
-        return view('welcome_message');
+        $data =['title'=> 'Ajuste de Inventario'];
+        return view('inventory_adjustment/index',$data);
     }
 }
