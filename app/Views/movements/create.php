@@ -13,22 +13,28 @@
             </div>
             <div class="card card-form p-2 mx-auto mt-5" style="width: 900px;">
                 <form class="row g-3 p-2">
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <label for="inputEmail4" class="form-label">Ubicacion Origen</label>
                         <select class="form-select" aria-label="Default select example">
-                            <option selected>A1</option>
-                            <option value="1">A2</option>
-                            <option value="2">A3</option>
-                            <option value="3">A4</option>
+                            <?php foreach($locations as $location): ?>
+                                <option value="<?=$location->id ?>"><?=$location->nombre ?></option>
+                            <?php endforeach; ?>
                         </select>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <label for="inputEmail4" class="form-label">Ubicacion Destino</label>
                         <select class="form-select" aria-label="Default select example">
-                            <option selected>A4</option>
-                            <option value="1">A2</option>
-                            <option value="2">A3</option>
-                            <option value="3">A1</option>
+                            <?php foreach($locations as $location): ?>
+                                <option value="<?=$location->id ?>"><?=$location->nombre ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="inputEmail4" class="form-label">Tipo de Movimiento</label>
+                        <select class="form-select" aria-label="Default select example">
+                            <?php foreach($types as $type): ?>
+                                <option value="<?=$type->id ?>"><?=$type->nombre ?></option>
+                            <?php endforeach; ?>
                         </select>
                     </div>
                     <div class="table-responsive mt-5">

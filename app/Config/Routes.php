@@ -6,13 +6,12 @@ use CodeIgniter\Router\RouteCollection;
  * @var RouteCollection $routes
  */
 
-$routes->get('/', 'Home::index');
-$routes->get('dashboard', 'Dashboard::index');
+$routes->get('/', 'Dashboard::index');
 $routes->get('products', 'Products::index');
 $routes->get('products/create', 'Products::create');
 $routes->get('movements', 'Movements::index');
 $routes->get('movements/create', 'Movements::create');
 $routes->get('disposal', 'Disposal::index');
-$routes->get('inventory_adj', 'InventoryAdjustment::index');
+$routes->get('inventory_adjustment', 'InventoryAdjustment::index');
 $routes->get('settings', 'Settings::index');
 $routes->get('user', 'User::index');
