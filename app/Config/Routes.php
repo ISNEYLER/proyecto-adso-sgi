@@ -13,5 +13,6 @@ $routes->get('movements', 'Movements::index');
 $routes->get('movements/create', 'Movements::create');
 $routes->get('disposal', 'Disposal::index');
 $routes->get('inventory_adjustment', 'InventoryAdjustment::index');
+$routes->get('inventory_adjustment/create', 'InventoryAdjustment::create');
 $routes->get('settings', 'Settings::index');
 $routes->get('user', 'User::index');
