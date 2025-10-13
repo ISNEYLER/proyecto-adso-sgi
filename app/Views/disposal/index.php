@@ -4,10 +4,10 @@
 <div class="p-4">
     <div class="d-flex justify-content-between">
                 <div class="d-flex">
-                    <H4>Ajuste de inventario</H4>
+                    <H4>Desecho</H4>
                 </div>
                 <div class="d-flex gap-2">
-                    <a href="inventory_adjustment/create" class="btn btn-success">Crear ajuste de inventario</a>
+                    <a href="#" class="btn btn-success">Crear desecho</a>
                     <input type="email" class="form-control form-control-sm w-auto" id="exampleFormControlInput1" placeholder="Buscar">
                 </div>
             </div>
@@ -15,12 +15,11 @@
                 <table class="table table-striped table-hover">
                     <thead>
                         <tr class="table-light">
-                            <th>Ubicacion</th>
-                            <th>Producto</th>
-                            <th>Cantidad a mano</th>
-                            <th>Cantidad contada</th>
-                            <th>Diferencia</th>
+                            <th>ID</th>
                             <th>Fecha</th>
+                            <th>Producto</th>
+                            <th>Cantidad</th>
+                            <th>Origen</th>
                         </tr>
                     </thead>
                     <tbody>

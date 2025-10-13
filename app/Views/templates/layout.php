@@ -17,7 +17,7 @@
                     <a class="list-group-item list-group-item-action py-2 ripple" href="<?= base_url('products')?>">Productos</a>
                     <a class="list-group-item list-group-item-action py-2 ripple" href="<?= base_url('movements')?>">Movimientos</a>
                     <a class="list-group-item list-group-item-action py-2 ripple" href="<?= base_url('inventory_adjustment')?>">Ajuste de Inventario</a>
-                    <a class="list-group-item list-group-item-action py-2 ripple" href="#">Desecho</a>
+                    <a class="list-group-item list-group-item-action py-2 ripple" href="<?= base_url('disposal')?>">Desecho</a>
                     <a class="list-group-item list-group-item-action py-2 ripple" href="#">Ajustes</a>
                 </div>
             </div>

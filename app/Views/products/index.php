@@ -8,7 +8,7 @@
       </div>
       <div class="d-flex gap-2">
         <a class="btn btn-success btn" href="<?= base_url('products/create')?>">Añadir Producto</a>
-        <input type="email" class="form-control form-control-sm w-auto" id="exampleFormControlInput1" placeholder="Buscar">
+        <input type="text" class="form-control form-control-sm w-auto" id="exampleFormControlInput1" placeholder="Buscar">
     </div>
   </div>
   <div class="table-responsive py-4">

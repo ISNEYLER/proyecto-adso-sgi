@@ -2,7 +2,7 @@
 
 <?php echo $this->section('content'); ?>
 <div>
-            <div class="d-flex justify-content-between p-4 bg-body">
+            <div class="d-flex justify-content-between p-4">
                 <div class="d-flex">
                     <H4>Crear producto</H4>
                 </div>
