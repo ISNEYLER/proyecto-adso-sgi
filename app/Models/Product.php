@@ -12,7 +12,7 @@ class Product extends Model
     protected $returnType       = 'object';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = [];
+    protected $allowedFields    = ['nombre','descripcion','valor','costo','sku','codigo_barras','id_categoria'];
 
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;
@@ -21,10 +21,10 @@ class Product extends Model
     protected array $castHandlers = [];
 
     // Dates
-    protected $useTimestamps = false;
+    protected $useTimestamps = true;
     protected $dateFormat    = 'datetime';
-    protected $createdField  = 'created_at';
-    protected $updatedField  = 'updated_at';
+    protected $createdField  = 'creado_el';
+    protected $updatedField  = 'modificado_el';
     protected $deletedField  = 'deleted_at';
 
     // Validation

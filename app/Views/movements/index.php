@@ -15,19 +15,23 @@
     <table class="table table-striped">
       <thead class="table-light">
         <tr>
+          <th>Fecha</th>
           <th>ID</th>
+          <th>Producto</th>
           <th>Origen</th>
           <th>Destino</th>
-          <th>Fecha</th>
+          <th>Cantidad</th>
         </tr>
       </thead>
       <tbody>
         <?php foreach($movements as $movement): ?>
           <tr>
+            <td><?=esc($movement->creado_el);?></td>
+            <td><?=esc($movement->id);?></td>
             <td><?=esc($movement->id);?></td>
             <td><?=esc($movement->id_ubicacion_origen);?></td>
             <td><?=esc($movement->id_ubicacion_destino);?></td>
-            <td><?=esc($movement->creado_el);?></td>
+            <td><?=esc($movement->id_ubicacion_destino);?></td>
           </tr>
         <?php endforeach; ?>
       </tbody>

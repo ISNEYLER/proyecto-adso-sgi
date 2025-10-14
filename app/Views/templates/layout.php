@@ -14,11 +14,12 @@
             <div class="position-sticky">
                 <div class="list-group list-group-flush mx-3 mt-4">
                     <a class="list-group-item list-group-item-action py-2 ripple" href="<?= base_url('/')?>">Dashboard</a>
-                    <a class="list-group-item list-group-item-action py-2 ripple" href="<?= base_url('products')?>">Productos</a>
-                    <a class="list-group-item list-group-item-action py-2 ripple" href="<?= base_url('movements')?>">Movimientos</a>
-                    <a class="list-group-item list-group-item-action py-2 ripple" href="<?= base_url('inventory_adjustment')?>">Ajuste de Inventario</a>
-                    <a class="list-group-item list-group-item-action py-2 ripple" href="<?= base_url('disposal')?>">Desecho</a>
-                    <a class="list-group-item list-group-item-action py-2 ripple" href="#">Ajustes</a>
+                    <a class="list-group-item list-group-item-action py-2 ripple" href="<?= base_url('products')?>">🎯 Productos</a>
+                    <a class="list-group-item list-group-item-action py-2 ripple" href="<?= base_url('movements')?>">🔄 Movimientos</a>
+                    <a class="list-group-item list-group-item-action py-2 ripple" href="<?= base_url('stock')?>">📊 Existencias</a>
+                    <a class="list-group-item list-group-item-action py-2 ripple" href="<?= base_url('inventory_adjustment')?>">📦 Ajuste de Inventario</a>
+                    <a class="list-group-item list-group-item-action py-2 ripple" href="<?= base_url('disposal')?>">🗑️ Desecho</a>
+                    <a class="list-group-item list-group-item-action py-2 ripple" href="#">⚙️ Ajustes</a>
                 </div>
             </div>
         </nav>
