@@ -8,7 +8,11 @@ use CodeIgniter\Router\RouteCollection;
 
 $routes->get('/', 'Dashboard::index');
 $routes->get('products', 'Products::index');
-$routes->get('products/create', 'Products::create');
+$routes->get('products/new', 'Products::new');
+$routes->get('products/edit/(:num)', 'Products::edit/$1');
+$routes->post('products/save', 'Products::save');
+$routes->put('products/update/(:num)', 'Products::update/$1');
+$routes->post('products/update/(:num)', 'Products::update/$1');
 $routes->get('movements', 'Movements::index');
 $routes->get('movements/create', 'Movements::create');
 $routes->get('disposal', 'Disposal::index');
