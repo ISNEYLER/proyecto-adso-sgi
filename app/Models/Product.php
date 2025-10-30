@@ -43,4 +43,22 @@ class Product extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    public function obtenerProductos()
+    {
+        $builder = $this->db->table('productos p');
+        $builder->select('
+            p.id,
+            p.nombre,
+            p.valor,
+            p.costo,
+            COALESCE(SUM(e.cantidad), 0) AS cantidad
+        ');
+        $builder->join('existencias e', 'p.id = e.id_producto', 'left'); // LEFT para incluir productos sin stock
+        $builder->groupBy('p.id, p.nombre, p.valor, p.costo');
+
+        $query = $builder->get();
+        return $query->getResultObject();
+    }
+
 }
