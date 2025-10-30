@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\Stock;
 
 class Products extends BaseController
 {
@@ -12,13 +13,14 @@ class Products extends BaseController
     public function index(): string
     {
         $productoModel = new Product();
-        $result = $productoModel->findAll();
+        // $result = $productoModel->findAll();
+        $result = $productoModel->obtenerProductos();
 
         $data = ['title' => 'Productos', 'products' => $result];
         return view('products/index', $data);
     }
 
-    public function new(): string
+    public function new()
     {
         $categoryModel = new Category();
         $result = $categoryModel->findAll();
@@ -105,6 +107,8 @@ class Products extends BaseController
 
         $productModel = new Product();  
         $productModel->insert($data);
+
+        
         return redirect()->to('products');
     }
 
@@ -128,6 +132,16 @@ class Products extends BaseController
 
         return view('products/edit', $data);
 
+    }
+
+    public function delete($id) {
+        if ($id == null){
+            return redirect()->to('products');
+        }
+
+        $productModel = new Product();
+        $product = $productModel->delete($id);
+        return redirect()->to('products');
     }
 
     public function update($id) {
@@ -179,7 +193,7 @@ class Products extends BaseController
             'sku' => [
                 'rules' => "permit_empty|is_unique[productos.sku,id,{$id}]|max_length[30]",
                 'errors' => [
-                    'is_unique' => 'El SKU ya existe en otro producto.',
+                    'is_unique' => 'Este SKU ya existe en otro producto.',
                     'max_length' => 'El SKU no puede superar los 30 caracteres.'
                 ]
             ],

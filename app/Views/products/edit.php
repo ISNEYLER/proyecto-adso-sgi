@@ -14,7 +14,7 @@
             <div class="card card-form p-2 mx-auto mt-5" style="width: 900px;">
                 <form id="formCreateProduct" class="row g-3 p-2" action="<?= base_url('products/update/'.$product->id) ?>" method="post">
 
-                    <input type="hidden" name="_method" value="put">
+                    <input type="hidden" name="_method" value="PUT">
                     <input type="hidden" name="id" value="<?= $product->id ?>">
 
                     <div class="col-md-12">

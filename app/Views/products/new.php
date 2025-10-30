@@ -12,7 +12,7 @@
                 </div>
             </div>
             <div class="card card-form p-2 mx-auto mt-5" style="width: 900px;">
-                <form id="formCreateProduct" class="row g-3 p-2" action="<?= base_url('products/save') ?>" method="post">
+                <form id="formCreateProduct" class="row g-3 p-2" action="<?= base_url('products/save') ?>" method="post" autocomplete="off">
                     <div class="col-md-12">
                         <label for="input-nameProduct" class="form-label">Producto</label>
                         <input type="text" class="form-control <?= isset($validation) && $validation->hasError('nombre') ? 'is-invalid' : (old('nombre') ? 'is-valid' : '') ?>" name="nombre" placeholder="Bicicleta de Montaña" value="<?= set_value('nombre') ?>">
