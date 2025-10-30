@@ -7,7 +7,7 @@
         <H4>Movimientos</H4>
       </div>
       <div class="d-flex gap-2">
-        <a class="btn btn-success btn" href="<?= base_url('movements/create')?>">Crear Movimiento</a>
+        <a class="btn btn-success btn" href="<?= base_url('movements/new')?>">Crear Movimiento</a>
         <input type="text" class="form-control form-control-sm w-auto" id="exampleFormControlInput1" placeholder="Buscar">
     </div>
   </div>
@@ -15,8 +15,8 @@
     <table class="table table-striped">
       <thead class="table-light">
         <tr>
-          <th>Fecha</th>
           <th>ID</th>
+          <th>Fecha</th>
           <th>Producto</th>
           <th>Origen</th>
           <th>Destino</th>
@@ -26,12 +26,12 @@
       <tbody>
         <?php foreach($movements as $movement): ?>
           <tr>
-            <td><?=esc($movement->creado_el);?></td>
             <td><?=esc($movement->id);?></td>
-            <td><?=esc($movement->id);?></td>
-            <td><?=esc($movement->id_ubicacion_origen);?></td>
-            <td><?=esc($movement->id_ubicacion_destino);?></td>
-            <td><?=esc($movement->id_ubicacion_destino);?></td>
+            <td><?=esc($movement->fecha);?></td>
+            <td><?=esc($movement->producto);?></td>
+            <td><?=esc($movement->ubicacion_origen);?></td>
+            <td><?=esc($movement->ubicacion_destino);?></td>
+            <td><?=esc($movement->cantidad);?></td>
           </tr>
         <?php endforeach; ?>
       </tbody>
