@@ -6,6 +6,7 @@
     <title><?php echo($title); ?></title>
     <link rel="stylesheet" href="<?= base_url('lib/bootstrap/css/bootstrap.min.css') ?>">
     <link rel="stylesheet" href="<?= base_url('css/styles.css') ?>">
+    <link rel="stylesheet" href="<?= base_url('lib/datatables/css/datatables.min.css') ?>">
 </head>
 <body class="bg-light">
     <header>
@@ -45,5 +46,7 @@
 </body>
 <script src="<?php echo base_url('lib/popper/popper.min.js'); ?>"></script>
 <script src="<?php echo base_url('lib/bootstrap/js/bootstrap.min.js'); ?>"></script>
+<script src="<?php echo base_url('lib/jquery/jquery-3.7.1.min.js'); ?>"></script>
+<script src="<?php echo base_url('lib/datatables/js/datatables.min.js'); ?>"></script>
 <?php echo($this->renderSection("scripts")); ?>
 </html>
