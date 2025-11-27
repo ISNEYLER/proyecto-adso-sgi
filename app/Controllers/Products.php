@@ -20,6 +20,10 @@ class Products extends BaseController
         return view('products/index', $data);
     }
 
+    public function list(){
+        
+    }
+
     public function new()
     {
         $categoryModel = new Category();

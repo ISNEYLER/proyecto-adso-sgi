@@ -1,52 +1,140 @@
+<?php
+    use \Mdi\Mdi;
+    Mdi::withIconsPath(__DIR__.'/../../../node_modules/@mdi/svg/svg/');
+?>
+
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo($title); ?></title>
-    <link rel="stylesheet" href="<?= base_url('lib/bootstrap/css/bootstrap.min.css') ?>">
+    <title><?php echo ($title); ?></title>
     <link rel="stylesheet" href="<?= base_url('css/styles.css') ?>">
-    <link rel="stylesheet" href="<?= base_url('lib/datatables/css/datatables.min.css') ?>">
 </head>
-<body class="bg-light">
-    <header>
-        <!-- Sidebar -->
-        <nav class="sidebar collapse d-lg-block sidebar bg-white" id="navbarToggler">
-            <div class="position-sticky">
-                <div class="list-group list-group-flush mx-3 mt-4">
-                    <a class="list-group-item list-group-item-action py-2 ripple" href="<?= base_url('/')?>">Dashboard</a>
-                    <a class="list-group-item list-group-item-action py-2 ripple" href="<?= base_url('products')?>">🎯 Productos</a>
-                    <a class="list-group-item list-group-item-action py-2 ripple" href="<?= base_url('movements')?>">🔄 Movimientos</a>
-                    <a class="list-group-item list-group-item-action py-2 ripple" href="<?= base_url('stocks')?>">📊 Existencias</a>
-                    <a class="list-group-item list-group-item-action py-2 ripple" href="#">⚙️ Ajustes</a>
+
+<body>
+    <!-- Navbar -->
+    <nav class="fixed top-0 left-0 right-0 z-30 bg-white shadow-sm h-14 flex items-center">
+        <div class="w-full flex justify-between items-center px-6">
+
+            <!-- Brand -->
+            <div class="flex items-center">
+                <a href="/admin/" class="flex items-center">
+                    <img src="https://listmonk.app/static/images/logo.svg" alt="" class="hidden md:block h-4 mt-1">
+                    <img src="" alt="" class="block md:hidden h-6 mt-1">
+                </a>
+            </div>
+
+            <!-- Burger -->
+            <button class="md:hidden flex flex-col justify-center items-center w-10 h-10 hover:bg-gray-100 rounded">
+                <span class="w-5 h-0.5 bg-gray-600 mb-1"></span>
+                <span class="w-5 h-0.5 bg-gray-600 mb-1"></span>
+                <span class="w-5 h-0.5 bg-gray-600"></span>
+            </button>
+
+            <!-- Menu -->
+            <div class="hidden md:flex items-center space-x-4">
+                <!-- User Dropdown -->
+                <div class="relative group">
+                    <!-- Avatar -->
+                    <button
+                        class="flex items-center justify-center w-8 h-8 rounded-full bg-gray-300 font-bold text-sm">I</button>
+
+                    <!-- Dropdown -->
+                    <div class="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg hidden group-hover:block">
+                        <a href="/admin/user/profile" class="block px-4 py-3 hover:bg-gray-100">
+                            <strong>isneyler</strong>
+                            <div class="text-xs text-gray-500">isneyler</div>
+                        </a>
+                        <a href="/admin/user/profile" class="flex items-center gap-2 px-4 py-2 hover:bg-gray-100">
+                            <span class="mdi mdi-account-outline text-xl"></span>
+                            Perfil
+                        </a>
+                        <a href="#" class="flex items-center gap-2 px-4 py-2 hover:bg-gray-100">
+                            <span class="mdi mdi-logout-variant text-xl"></span>
+                            Cerrar sesión
+                        </a>
+                    </div>
                 </div>
             </div>
-        </nav>
-        <!-- Navbar -->
-        <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
-            <div class="container-fluid">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <a class="navbar-brand" href="<?= base_url('/')?>">LOGO</a>
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">PERFIL</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-    </header>
-    <!-- main -->
-    <main style="margin-top: 58px">
-        <div class="container pt-4">
-            <?php echo($this->renderSection("content")); ?>
         </div>
-    </main>
+    </nav>
+
+    <!-- main -->
+    <div class="flex wrapper min-h-screen pt-14">
+        <section class="hidden md:block">
+            <aside
+                class="w-60 bg-white shadow-sm border-r border-gray-200 sticky top-14 h-full overflow-y-auto">
+
+                <nav class="p-4">
+                    <ul class="space-y-3 text-sm">
+
+                        <!-- Dashboard -->
+                        <li>
+                            <a href="<?= base_url('/') ?>"
+                                class="flex items-center gap-2 px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-blue-600 border-r-4 border-blue-600 bg-gray-50 font-semibold">
+                                <i class="mdi mdi-view-dashboard-variant-outline"></i>
+                                <?php echo Mdi::mdi('view-dashboard'); ?>
+                                <span>Dashboard</span>
+                            </a>
+                        </li>
+
+                        <!-- Productos -->
+                        <li>
+                            <a href="<?= base_url('products') ?>"
+                                class="flex items-center gap-2 px-4 py-2 text-gray-700 hover:bg-gray-100">
+                                <?php echo Mdi::mdi('package'); ?>
+                                <span>Productos</span>
+                            </a>
+                        </li>
+
+                        <!-- Movimientos -->
+                        <li>
+                            <a href="<?= base_url('movements') ?>"
+                                class="flex items-center gap-2 px-4 py-2 text-gray-700 hover:bg-gray-100">
+                                <i class="mdi mdi-rocket-launch-outline"></i>
+                                <?php echo Mdi::mdi('swap-horizontal'); ?>
+                                <span>Movimientos</span>
+                            </a>
+                        </li>
+
+                        <!-- Existencias -->
+                        <li>
+                            <a href="<?= base_url('stocks') ?>"
+                                class="flex items-center gap-2 px-4 py-2 text-gray-700 hover:bg-gray-100">
+                                <i class="mdi mdi-account-multiple"></i>
+                                <?php echo Mdi::mdi('warehouse'); ?>
+                                <span>Existencias</span>
+                            </a>
+                        </li>
+
+                        <!-- Settings -->
+                        <li>
+                            <a href="#" class="flex items-center gap-2 px-4 py-2 text-gray-700 hover:bg-gray-100">
+                                <i class="mdi mdi-cog-outline"></i>
+                                <?php echo Mdi::mdi('cog'); ?>
+                                <span>Configuración</span>
+                            </a>
+                        </li>
+
+                    </ul>
+                </nav>
+            </aside>
+        </section>
+        <main class="bg-white flex-1 p-[30px]">
+            <div>
+                <?php echo ($this->renderSection("content")); ?>
+            </div>
+        </main>
+    </div>
+
 </body>
-<script src="<?php echo base_url('lib/popper/popper.min.js'); ?>"></script>
-<script src="<?php echo base_url('lib/bootstrap/js/bootstrap.min.js'); ?>"></script>
+<!-- <script src="<?php echo base_url('lib/popper/popper.min.js'); ?>"></script>
+<script src="<?php echo base_url('lib/bootstrap/js/bootstrap.min.js'); ?>"></script> -->
 <script src="<?php echo base_url('lib/jquery/jquery-3.7.1.min.js'); ?>"></script>
 <script src="<?php echo base_url('lib/datatables/js/datatables.min.js'); ?>"></script>
-<?php echo($this->renderSection("scripts")); ?>
+<script src="<?php echo base_url('scripts.js'); ?>"></script>
+<?php echo ($this->renderSection("scripts")); ?>
+
 </html>

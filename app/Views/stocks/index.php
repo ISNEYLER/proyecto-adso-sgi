@@ -1,7 +1,7 @@
 <?php echo $this->extend('templates/layout'); ?>
 
 <?php echo $this->section('content'); ?>
-  <div class="p-4">
+  <!-- <div class="p-4">
     <div class="d-flex justify-content-between">
       <div class="d-flex">
         <H4>Stock</H4>
@@ -9,23 +9,23 @@
       <div class="d-flex gap-2">
         <a class="btn btn-success btn" href="<?= base_url('inventory_adjustment')?>">Crear ajuste de Stock</a>
         <input type="text" class="form-control form-control-sm w-auto" id="exampleFormControlInput1" placeholder="Buscar">
-    </div>
+    </div> -->
   </div>
-  <div class="table-responsive py-4">
-    <table class="table table-striped table-hover">
-      <thead class="table-light">
+  <div class="overflow-x-auto bg-white rounded-lg shadow">
+    <table class="min-w-full text-sm">
+      <thead class="bg-gray-100 text-gray-700">
         <tr>
-          <th>Producto</th>
-          <th>Cantidad</th>
-          <th>Ubicacion</th>
+          <th class="px-4 py-3 text-left">Producto</th>
+          <th class="px-4 py-3 text-left">Cantidad</th>
+          <th class="px-4 py-3 text-left">Ubicacion</th>
         </tr>
       </thead>
       <tbody>
         <?php foreach($stocks as $stock): ?>
-          <tr>
-            <td><?= esc($stock->producto); ?></td>
-            <td><?= esc($stock->cantidad); ?></td>
-            <td><?= esc($stock->ubicacion); ?></td>
+          <tr class="hover:bg-gray-50">
+            <td class="px-4 py-3"><?= esc($stock->producto); ?></td>
+            <td class="px-4 py-3"><?= esc($stock->cantidad); ?></td>
+            <td class="px-4 py-3"><?= esc($stock->ubicacion); ?></td>
           </tr>
         <?php endforeach; ?>
       </tbody>
