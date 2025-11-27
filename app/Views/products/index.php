@@ -1,55 +1,64 @@
+<?php
+use \Mdi\Mdi;
+Mdi::withIconsPath(__DIR__ . '/../../../node_modules/@mdi/svg/svg/');
+?>
+
 <?php echo $this->extend('templates/layout'); ?>
 
 <?php echo $this->section('content'); ?>
-  <div class="p-4">
-    <div class="d-flex justify-content-between">
-      <div class="d-flex">
-        <H4>Productos</H4>
-      </div>
-      <div class="d-flex gap-2">
-        <a class="btn btn-success btn" href="<?= base_url('products/new')?>">Añadir Producto</a>
-        <input type="text" class="form-control form-control-sm w-auto" id="exampleFormControlInput1" placeholder="Buscar">
+<div class="overflow-x-auto bg-white rounded-lg shadow">
+  <div class="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 p-4">
+    <div class="w-full md:w-1/2">
+      <form class="flex items-center">
+        <label for="simple-search" class="sr-only">Buscar</label>
+        <div class="relative w-full">
+          <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+
+          </div>
+          <input type="text" name="" id="" placeholder="Buscar" class="bg-blue-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2">
+        </div>
+      </form>
+    </div>
+    <div class="w-full md:w-auto flex flex-col md:flex-row space-y-2 md:space-y-0 items-stretch md:items-center justify-end md:space-x-3 flex-shrink-0">
+      <button class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Save</button>
     </div>
   </div>
-  <div class="table-responsive py-4">
-    <table class="table table-striped table-hover">
-      <thead class="table-light">
-        <tr>
-          <th>Producto</th>
-          <th>Precio</th>
-          <th>Costo</th>
-          <th>Cantidad</th>
-          <th>Opciones</th>
-        </tr>
-      </thead>
-      <tbody>
-        <?php foreach($products as $producto): ?>
-          <tr>
-            <td><?= esc($producto->nombre); ?></td>
-            <td><?= $producto->valor; ?></td>
-            <td><?= $producto->costo; ?></td>
-            <td><?= $producto->cantidad; ?></td>
-            <td>
-              <a class="btn btn-warning" href="<?= base_url('products/edit/' . $producto->id) ?>">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
-                  <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325"/>
-                </svg>
+  <table class="min-w-full text-sm">
+    <thead class="bg-gray-100 text-gray-700">
+      <tr>
+        <th class="px-4 py-3 text-left">Producto</th>
+        <th class="px-4 py-3 text-left">Precio</th>
+        <th class="px-4 py-3 text-left">Costo</th>
+        <th class="px-4 py-3 text-left">Cantidad</th>
+        <th class="px-4 py-3 text-center">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <?php foreach ($products as $producto): ?>
+        <tr class="hover:bg-gray-50">
+          <td class="px-4 py-3"><?= esc($producto->nombre); ?></td>
+          <td class="px-4 py-3"><?= $producto->valor; ?></td>
+          <td class="px-4 py-3"><?= $producto->costo; ?></td>
+          <td class="px-4 py-3"><?= $producto->cantidad; ?></td>
+          <td class="px-4 py-3">
+            <div class="flex item-center justify-center">
+              <a class="text-blue-600 hover:text-blue-800" href="<?= base_url('products/edit/' . $producto->id) ?>">
+                <?php echo Mdi::mdi('pencil'); ?>
               </a>
               <a class="btn btn-danger" href="<?= base_url('products/delete/' . $producto->id) ?>">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
-                  <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
-                  <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
-                </svg>
+                <?php echo Mdi::mdi(icon: 'delete'); ?>
               </a>
               <a class="btn btn-success" href="">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
-                <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
-              </svg>
+                <?php echo Mdi::mdi('arrow-right-bold'); ?>
               </a>
-            </td>
-          </tr>
-        <?php endforeach; ?>
-      </tbody>
-    </table>
-  </div>
+            </div>
+          </td>
+        </tr>
+      <?php endforeach; ?>
+    </tbody>
+  </table>
+</div>
+
+
+
 <?php echo $this->endSection(); ?>

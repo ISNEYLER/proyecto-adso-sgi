@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "657ac079313fab046eb8c29fe1d6992b",
+    "content-hash": "46cdc08bc6ed2624e2a786a240e07e13",
     "packages": [
         {
             "name": "codeigniter4/framework",
@@ -140,6 +140,54 @@
                 }
             ],
             "time": "2025-05-06T19:29:36+00:00"
+        },
+        {
+            "name": "mesavolt/mdi-php",
+            "version": "v1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/quentin-st/MaterialDesignIcons-PHP.git",
+                "reference": "b57d2ddb1e5e0cecc5dcfc5a43ff24f5c0a895c3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/quentin-st/MaterialDesignIcons-PHP/zipball/b57d2ddb1e5e0cecc5dcfc5a43ff24f5c0a895c3",
+                "reference": "b57d2ddb1e5e0cecc5dcfc5a43ff24f5c0a895c3",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.1"
+            },
+            "require-dev": {
+                "php-coveralls/php-coveralls": "^2.0",
+                "phpunit/phpunit": "^10"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Mdi\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "MesaVolt",
+                    "email": "contact@mesavolt.com"
+                },
+                {
+                    "name": "Quentin",
+                    "email": "stoeckel.quentin@gmail.com"
+                }
+            ],
+            "description": "Easy MDI integration for PHP",
+            "support": {
+                "issues": "https://github.com/quentin-st/MaterialDesignIcons-PHP/issues",
+                "source": "https://github.com/quentin-st/MaterialDesignIcons-PHP/tree/v1.2.0"
+            },
+            "time": "2025-03-16T12:54:07+00:00"
         },
         {
             "name": "psr/log",
