@@ -84,6 +84,13 @@ class Movement extends Model
                     -$data['cantidad']
                 );
                 break;
+            case 4:
+                $stockModel->actualizarStock(
+                    $data['id_producto'],
+                    $data['id_ubicacion_destino'],
+                    $data['cantidad']
+                );
+                break;
         }
     }
 
@@ -92,6 +99,7 @@ class Movement extends Model
         $builder = $this->db->table('movimientos m');
         $builder->select('
             m.id,
+            tp.nombre AS tipo,
             p.nombre AS producto,
             uo.nombre AS ubicacion_origen,
             ud.nombre AS ubicacion_destino,
@@ -101,8 +109,26 @@ class Movement extends Model
         $builder->join('productos p', 'm.id_producto = p.id');
         $builder->join('ubicaciones uo', 'm.id_ubicacion_origen = uo.id');
         $builder->join('ubicaciones ud', 'm.id_ubicacion_destino = ud.id');
+        $builder->join('tipos_movimientos tp', 'tp.id = m.id_tipo_movimiento');
 
         $query = $builder->get();
         return $query->getResultObject();
     }
+
+    public function obtenerMovimientosConNombresDash($limit = 5)
+    {
+        return $this->select('
+                movimientos.id,
+                productos.nombre AS producto,
+                tipos_movimientos.nombre AS tipo,
+                movimientos.cantidad,
+                movimientos.fecha
+            ')
+            ->join('productos', 'productos.id = movimientos.id_producto')
+            ->join('tipos_movimientos', 'tipos_movimientos.id = movimientos.id_tipo_movimiento')
+            ->orderBy('movimientos.fecha', 'DESC')
+            ->limit($limit)
+            ->findAll();
+    }
+
 }

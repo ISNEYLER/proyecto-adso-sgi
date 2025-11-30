@@ -61,4 +61,10 @@ class Product extends Model
         return $query->getResultObject();
     }
 
+
+    public function productosBajoStock()
+    {
+        return $this->where('stock_actual < stock_minimo')->findAll();
+    }
+
 }
