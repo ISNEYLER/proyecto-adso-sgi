@@ -17,9 +17,9 @@ Mdi::withIconsPath(__DIR__ . '/../../../node_modules/@mdi/svg/svg/');
 
   <!-- Botón principal -->
   <a
-    href="<?= base_url('products/new') ?>" class="flex items-center gap-2 bg-blue-600 hover:bg-blue-800 text-white px-5 py-2 rounded-lg shadow transition">
+    href="<?= base_url('categories/new') ?>" class="flex items-center gap-2 bg-blue-600 hover:bg-blue-800 text-white px-5 py-2 rounded-lg shadow transition">
     <?php echo Mdi::mdi('plus'); ?>
-    Nuevo Producto
+    Crear Categoria
   </a>
 </div>
 
@@ -27,33 +27,26 @@ Mdi::withIconsPath(__DIR__ . '/../../../node_modules/@mdi/svg/svg/');
   <table class="min-w-full text-sm">
     <thead class="bg-gray-100 text-gray-700">
       <tr>
-        <th class="px-4 py-3 text-center">Producto</th>
-        <th class="px-4 py-3 text-center">Precio</th>
-        <th class="px-4 py-3 text-center">Costo</th>
-        <th class="px-4 py-3 text-center">Cantidad</th>
+        <th class="px-4 py-3 text-center">ID</th>
+        <th class="px-4 py-3 text-center">Nombre</th>
         <th class="px-4 py-3 text-center">Acciones</th>
       </tr>
     </thead>
     <tbody>
-      <?php foreach ($products as $producto): ?>
+      <?php foreach ($categories as $categoria): ?>
         <tr class="hover:bg-gray-50">
-          <td class="px-4 py-3 text-center"><?= esc($producto->nombre); ?></td>
-          <td class="px-4 py-3 text-center"><?= $producto->valor; ?></td>
-          <td class="px-4 py-3 text-center"><?= $producto->costo; ?></td>
-          <td class="px-4 py-3 text-center"><?= $producto->cantidad; ?></td>
+          <td class="px-4 py-3 text-center"><?= esc($categoria->id); ?></td>
+          <td class="px-4 py-3 text-center"><?= $categoria->nombre; ?></td>
           <td class="px-4 py-3 text-center">
             <div class="flex item-center justify-center">
               <a
-                class="text-blue-600 hover:text-blue-800" href="<?= base_url('products/edit/' . $producto->id) ?>"><?php echo Mdi::mdi('pencil'); ?>
+                class="text-blue-600 hover:text-blue-800" href="<?= base_url('categories/edit/' . $categoria->id) ?>"><?php echo Mdi::mdi('pencil'); ?>
               </a>
-              <button onclick="openDeleteModal(<?= $producto->id ?>, '<?= esc($producto->nombre) ?>')" class="text-red-600 hover:text-red-800">
+              <button onclick="openDeleteModal(<?= $categoria->id ?>, '<?= esc($categoria->nombre) ?>')" class="text-red-600 hover:text-red-800">
                 <?= Mdi::mdi('delete'); ?>
               </button>
-              <a
-                class="btn btn-success" href=""><?php echo Mdi::mdi('arrow-right-bold'); ?>
-              </a>
             </div>
-          </td>
+            </td>
         </tr>
       <?php endforeach; ?>
     </tbody>
@@ -99,35 +92,7 @@ Mdi::withIconsPath(__DIR__ . '/../../../node_modules/@mdi/svg/svg/');
 </div>
 
 <script>
-function openDeleteModal(id, nombre) {
 
-    const modal  = document.getElementById('deleteModal');
-    const name   = document.getElementById('deleteName');
-    const form   = document.getElementById('deleteForm');
-
-    name.textContent = nombre;
-    form.action = "<?= base_url('products/delete/') ?>" + id;
-
-    modal.classList.remove('hidden');
-    modal.classList.add('flex');
-}
-
-function closeDeleteModal() {
-
-    const modal = document.getElementById('deleteModal');
-
-    modal.classList.add('hidden');
-    modal.classList.remove('flex');
-}
-
-// Cerrar si hacen click fuera del modal
-document.getElementById('deleteModal').addEventListener('click', function(e) {
-
-    if (e.target.id === 'deleteModal') {
-        closeDeleteModal();
-    }
-
-});
 </script>
 
 

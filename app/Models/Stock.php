@@ -94,4 +94,26 @@ class Stock extends Model
             ]);
         }
     }
+
+    public function obtenerProductosPorUbicacion($id_ubicacion)
+    {
+        $builder = $this->db->table('existencias e');
+        $builder->select('
+            p.id,
+            p.nombre
+        ');
+        $builder->join('productos p', 'e.id_producto = p.id');
+        $builder->where('e.id_ubicacion', $id_ubicacion);
+        $builder->groupBy('p.id');
+
+        return $builder->get()->getResultObject();
+    }
+
+    public function obtenerCantidadProductoEnUbicacion($id_producto, $id_ubicacion)
+    {
+        return $this->where('id_producto', $id_producto)
+                    ->where('id_ubicacion', $id_ubicacion)
+                    ->first();
+    }
+
 }

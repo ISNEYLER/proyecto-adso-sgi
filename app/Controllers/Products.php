@@ -138,14 +138,29 @@ class Products extends BaseController
 
     }
 
-    public function delete($id) {
-        if ($id == null){
+    public function delete($id)
+    {
+        if (!$this->request->is('post')) {
             return redirect()->to('products');
         }
 
         $productModel = new Product();
-        $product = $productModel->delete($id);
-        return redirect()->to('products');
+        $product = $productModel->find($id);
+
+        if (!$product) {
+            return redirect()->to('products')->with('error', 'Producto no encontrado');
+        }
+
+        // (Opcional) Evitar eliminar si tiene stock
+        // $stockModel = new Stock();
+        // $stock = $stockModel->where('id_producto', $id)->first();
+        // if ($stock && $stock['cantidad'] > 0) {
+        //     return redirect()->to('products')->with('error','No puedes eliminar un producto con stock');
+        // }
+
+        $productModel->delete($id);
+
+        return redirect()->to('products')->with('msg', 'Producto eliminado correctamente ✅');
     }
 
     public function update($id) {

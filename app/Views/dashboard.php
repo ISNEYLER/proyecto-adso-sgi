@@ -104,7 +104,7 @@
             </td>
 
             <td class="py-2 font-semibold">
-                <?= $movimiento->tipo === 'Entrada' ? '+' : '-' ?>
+                <?= $movimiento->tipo === 'Entrada' ? '+' : '' ?>
                 <?= esc($movimiento->cantidad) ?>
             </td>
 

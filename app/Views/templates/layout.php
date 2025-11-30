@@ -1,6 +1,8 @@
 <?php
     use \Mdi\Mdi;
     Mdi::withIconsPath(__DIR__.'/../../../node_modules/@mdi/svg/svg/');
+
+    $user = auth()->user();
 ?>
 
 <!DOCTYPE html>
@@ -35,29 +37,25 @@
 
             <!-- Menu -->
             <div class="hidden md:flex items-center space-x-4">
-                <!-- User Dropdown -->
-                <div class="relative group">
-                    <!-- Avatar -->
-                    <button
-                        class="flex items-center justify-center w-8 h-8 rounded-full bg-gray-300 font-bold text-sm">I</button>
+    <div class="relative group">
+        <!-- Avatar -->
+        <button class="flex items-center justify-center w-8 h-8 rounded-full bg-gray-300 font-bold text-sm uppercase">
+            <?= $user ? substr($user->username ?? $user->email, 0, 1) : '?' ?>
+        </button>
 
-                    <!-- Dropdown -->
-                    <div class="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg hidden group-hover:block">
-                        <a href="/admin/user/profile" class="block px-4 py-3 hover:bg-gray-100">
-                            <strong>isneyler</strong>
-                            <div class="text-xs text-gray-500">isneyler</div>
-                        </a>
-                        <a href="/admin/user/profile" class="flex items-center gap-2 px-4 py-2 hover:bg-gray-100">
-                            <span class="mdi mdi-account-outline text-xl"></span>
-                            Perfil
-                        </a>
-                        <a href="#" class="flex items-center gap-2 px-4 py-2 hover:bg-gray-100">
-                            <span class="mdi mdi-logout-variant text-xl"></span>
-                            Cerrar sesión
-                        </a>
-                    </div>
-                </div>
-            </div>
+        <!-- Dropdown -->
+        <div class="absolute right-0 top-full pt-2 w-48 bg-white rounded-lg shadow-lg hidden group-hover:block">
+            <a href="/admin/user/profile" class="block px-4 py-3 hover:bg-gray-100">
+                <strong><?= esc($user->username ?? 'Usuario') ?></strong>
+                <div class="text-xs text-gray-500"><?= esc($user->email) ?></div>
+            </a>
+            <a href="<?= url_to('logout') ?>" class="flex items-center gap-2 px-4 py-2 hover:bg-gray-100">
+                <?= Mdi::mdi('logout-variant'); ?> Cerrar sesión
+            </a>
+        </div>
+    </div>
+</div>
+
         </div>
     </nav>
 
@@ -87,16 +85,31 @@
                                 <?php echo Mdi::mdi('package'); ?>
                                 <span>Productos</span>
                             </a>
+                            <ul class="ml-4 border-l border-gray-200 mt-2 space-y-1">
+                                <li>
+                                    <a href="<?= base_url(relativePath: 'categories') ?>" class="flex items-center gap-2 px-4 py-1 text-gray-700 hover:bg-gray-100">
+                                        <?php echo Mdi::mdi('mdi-shape-outline'); ?>
+                                        <span>Categorias</span>
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
 
                         <!-- Movimientos -->
                         <li>
                             <a href="<?= base_url('movements') ?>"
                                 class="flex items-center gap-2 px-4 py-2 text-gray-700 hover:bg-gray-100">
-                                <i class="mdi mdi-rocket-launch-outline"></i>
                                 <?php echo Mdi::mdi('swap-horizontal'); ?>
                                 <span>Movimientos</span>
                             </a>
+                            <ul class="ml-4 border-l border-gray-200 mt-2 space-y-1">
+                                <li>
+                                    <a href="<?= base_url(relativePath: 'locations') ?>" class="flex items-center gap-2 px-4 py-1 text-gray-700 hover:bg-gray-100">
+                                        <?php echo Mdi::mdi('mdi-store'); ?>
+                                        <span>Ubicaciones</span>
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
 
                         <!-- Existencias -->
@@ -108,16 +121,6 @@
                                 <span>Existencias</span>
                             </a>
                         </li>
-
-                        <!-- Settings -->
-                        <li>
-                            <a href="#" class="flex items-center gap-2 px-4 py-2 text-gray-700 hover:bg-gray-100">
-                                <i class="mdi mdi-cog-outline"></i>
-                                <?php echo Mdi::mdi('cog'); ?>
-                                <span>Configuración</span>
-                            </a>
-                        </li>
-
                     </ul>
                 </nav>
             </aside>
@@ -130,10 +133,7 @@
     </div>
 
 </body>
-<!-- <script src="<?php echo base_url('lib/popper/popper.min.js'); ?>"></script>
-<script src="<?php echo base_url('lib/bootstrap/js/bootstrap.min.js'); ?>"></script> -->
 <script src="<?php echo base_url('lib/jquery/jquery-3.7.1.min.js'); ?>"></script>
-<script src="<?php echo base_url('lib/datatables/js/datatables.min.js'); ?>"></script>
 <script src="<?php echo base_url('scripts.js'); ?>"></script>
 <?php echo ($this->renderSection("scripts")); ?>
 
