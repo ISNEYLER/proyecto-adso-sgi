@@ -21,4 +21,6 @@ $routes->get('disposal', 'Disposal::index');
 $routes->get('inventory_adjustment', 'InventoryAdjustment::index');
 $routes->get('inventory_adjustment/create', 'InventoryAdjustment::create');
 $routes->get('settings', 'Settings::index');
+
+service('auth')->routes($routes);
 $routes->get('user', 'User::index');
