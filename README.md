@@ -9,7 +9,7 @@ Además, se emplean **Bootstrap** para el diseño responsivo y **Composer** para
 
 - **PHP 8.x** → Lenguaje principal del proyecto.  
 - **CodeIgniter 4** → Framework PHP ligero que facilita el desarrollo con una arquitectura MVC clara.  
-- **Bootstrap 5** → Framework CSS para crear interfaces modernas, limpias y responsivas.  
+- **tailwindcss** → Framework CSS para crear interfaces modernas, limpias y responsivas.  
 - **Composer** → Herramienta de gestión de dependencias PHP, utilizada para instalar y mantener CodeIgniter y otros paquetes necesarios.  
 
 ---
