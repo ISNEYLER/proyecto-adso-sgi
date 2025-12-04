@@ -67,4 +67,35 @@ class Product extends Model
         return $this->where('stock_actual < stock_minimo')->findAll();
     }
 
+    public function productosSinStock(){
+        $builder = $this->db->table('productos p');
+        $builder->select('
+            p.id,
+            p.nombre,
+            p.valor,
+            p.costo,
+            COALESCE(SUM(e.cantidad), 0) AS cantidad
+        ');
+        $builder->join('existencias e', 'p.id = e.id_producto', 'left'); // Incluye productos sin registros
+        $builder->groupBy('p.id, p.nombre, p.valor, p.costo');
+
+        // SOLO productos sin stock
+        $builder->having('cantidad', 0);
+        $builder->limit(4);
+
+        $query = $builder->get();
+        return $query->getResultObject();
+    }
+
+    public function totalSinStock(){
+        $builder = $this->db->table('productos p');
+        $builder->select('p.id, COALESCE(SUM(e.cantidad), 0) AS cantidad');
+        $builder->join('existencias e', 'p.id = e.id_producto', 'left');
+        $builder->groupBy('p.id');
+        $builder->having('cantidad', 0);
+
+        $query = $builder->get();
+
+        return $query->getNumRows(); // <-- TOTAL de productos sin stock
+    }
 }

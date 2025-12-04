@@ -32,6 +32,8 @@ class Dashboard extends BaseController
 
         $ultimosMovimientos = $movementModel->obtenerMovimientosConNombresDash();
 
+        $productossinStock = $productModel->productosSinStock();
+        $totalsinStock = $productModel->totalSinStock();
         // $productosBajoStock = $productModel->productosBajoStock();
 
         $data = [
@@ -40,7 +42,9 @@ class Dashboard extends BaseController
             "totalMovimientos" => $totalMovimientos,
             'totalStockBajo'  => count($stockBajo),
             'stockBajo'       => $stockBajo,
-            'ultimosMovimientos' => $ultimosMovimientos
+            'ultimosMovimientos' => $ultimosMovimientos,
+            'productosSinStock' => $productossinStock,
+            'totalSinStock' => $totalsinStock
         ];
 
         return view('dashboard', $data);

@@ -42,6 +42,44 @@ class Categories extends BaseController
 
     }
 
+    public function delete($id){
+        if (!$this->request->is('post')) {
+            return redirect()->to('categories');
+        }
+
+        $categoryModel = new Category();
+        $category = $categoryModel->find($id);
+
+        if (!$category) {
+            return redirect()->to('categories')->with('error', 'Categoría no encontrada');
+        }
+
+        $data = [
+            'id' => $id
+        ];
+
+        $rules = [
+            'id' => [
+                'rules'  => 'required|categoriaEnUso',
+                'errors' => [
+                    'required'         => 'ID de categoría inválido.',
+                    'categoriaEnUso'   => 'Esta categoría no puede ser eliminada porque tiene productos asociados.'
+                ]
+            ]
+        ];
+
+        if (!$this->validateData($data, $rules)) {
+            return redirect()->to('categories')
+                ->with('error', $this->validator->getError('id'));
+        }
+
+        $categoryModel->delete($id);
+
+        return redirect()->to('categories')->with('msg', 'Categoría eliminada correctamente');
+    }
+
+
+
 
     public function update($id){
         $data = [

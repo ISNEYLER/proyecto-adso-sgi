@@ -23,6 +23,19 @@ Mdi::withIconsPath(__DIR__ . '/../../../node_modules/@mdi/svg/svg/');
   </a>
 </div>
 
+<?php if (session()->getFlashdata('error')): ?>
+  <div class="mb-4 p-4 bg-red-100 text-red-700 rounded-lg">
+    <?= session()->getFlashdata('error') ?>
+  </div>
+<?php endif; ?>
+
+<?php if (session()->getFlashdata('msg')): ?>
+  <div class="mb-4 p-4 bg-green-100 text-green-700 rounded-lg">
+    <?= session()->getFlashdata('msg') ?>
+  </div>
+<?php endif; ?>
+
+
 <div class="overflow-x-auto bg-white rounded-lg shadow">
   <table class="min-w-full text-sm">
     <thead class="bg-gray-100 text-gray-700">
@@ -66,7 +79,7 @@ Mdi::withIconsPath(__DIR__ . '/../../../node_modules/@mdi/svg/svg/');
         </h2>
 
         <p class="text-sm text-gray-600 mb-4">
-            ¿Está seguro que desea eliminar el producto
+            ¿Está seguro que desea eliminar la ubicación
             <span id="deleteName" class="font-bold"></span>?
         </p>
 
@@ -96,9 +109,36 @@ Mdi::withIconsPath(__DIR__ . '/../../../node_modules/@mdi/svg/svg/');
 </div>
 
 <script>
+function openDeleteModal(id, nombre) {
 
+    const modal  = document.getElementById('deleteModal');
+    const name   = document.getElementById('deleteName');
+    const form   = document.getElementById('deleteForm');
+
+    name.textContent = nombre;
+    form.action = "<?= base_url('locations/delete/') ?>" + id;
+
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+}
+
+function closeDeleteModal() {
+
+    const modal = document.getElementById('deleteModal');
+
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+}
+
+// Cerrar si hacen click fuera del modal
+document.getElementById('deleteModal').addEventListener('click', function(e) {
+
+    if (e.target.id === 'deleteModal') {
+        closeDeleteModal();
+    }
+
+});
 </script>
-
 
 <?php echo $this->endSection(); ?>
 

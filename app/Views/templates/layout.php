@@ -1,7 +1,6 @@
 <?php
     use \Mdi\Mdi;
     Mdi::withIconsPath(__DIR__.'/../../../node_modules/@mdi/svg/svg/');
-
     $user = auth()->user();
 ?>
 
@@ -22,9 +21,10 @@
 
             <!-- Brand -->
             <div class="flex items-center">
-                <a href="/admin/" class="flex items-center">
-                    <img src="https://listmonk.app/static/images/logo.svg" alt="" class="hidden md:block h-4 mt-1">
+                <a href="/" class="flex items-center">
+                    <img src="" alt="" class="hidden md:block h-4 mt-1">
                     <img src="" alt="" class="block md:hidden h-6 mt-1">
+                    LOGO
                 </a>
             </div>
 
