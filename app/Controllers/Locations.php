@@ -66,6 +66,43 @@ class Locations extends BaseController
 
     }
 
+    public function delete($id){
+        if (!$this->request->is('post')) {
+            return redirect()->to('locations');
+        }
+
+        $locationModel = new Location();
+        $location = $locationModel->find($id);
+
+        if (!$location) {
+            return redirect()->to('locations')->with('error', 'Ubicación no encontrada');
+        }
+
+        $data = [
+            'id' => $id
+        ];
+
+        $rules = [
+            'id' => [
+                'rules'  => 'required|ubicacionConMovimientos',
+                'errors' => [
+                    'required' => 'ID de ubicación inválido.',
+                    'ubicacionConMovimientos' => 'Esta ubicación no puede ser eliminada porque tiene movimientos asociados.'
+                ]
+            ]
+        ];
+
+        if (!$this->validateData($data, $rules)) {
+            return redirect()->to('locations')
+                ->with('error', $this->validator->getError('id'));
+        }
+
+        $locationModel->delete($id);
+
+        return redirect()->to('locations')->with('msg', 'Ubicación eliminada correctamente');
+    }
+
+
 
     public function update($id){
         $data = [

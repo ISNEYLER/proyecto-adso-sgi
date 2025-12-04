@@ -138,30 +138,38 @@ class Products extends BaseController
 
     }
 
-    public function delete($id)
-    {
+    
+    public function delete($id){
         if (!$this->request->is('post')) {
             return redirect()->to('products');
         }
 
-        $productModel = new Product();
-        $product = $productModel->find($id);
+        $data = ['id' => $id];
 
-        if (!$product) {
-            return redirect()->to('products')->with('error', 'Producto no encontrado');
+        $rules = [
+            'id' => [
+                'rules'  => 'required|sinExistencias',
+                'errors' => [
+                    'required'        => 'ID inválido.',
+                    'sinExistencias'  => 'Este producto no puede ser eliminado porque tiene existencias en el inventario'
+                ]
+            ]
+        ];
+
+        if (!$this->validateData($data, $rules)) {
+            return redirect()->to('products')->with(
+                'error',
+                $this->validator->listErrors()
+            );
         }
 
-        // (Opcional) Evitar eliminar si tiene stock
-        // $stockModel = new Stock();
-        // $stock = $stockModel->where('id_producto', $id)->first();
-        // if ($stock && $stock['cantidad'] > 0) {
-        //     return redirect()->to('products')->with('error','No puedes eliminar un producto con stock');
-        // }
+        $productModel = new Product();
 
         $productModel->delete($id);
 
-        return redirect()->to('products')->with('msg', 'Producto eliminado correctamente ✅');
+        return redirect()->to('products')->with('msg', 'Producto eliminado correctamente');
     }
+
 
     public function update($id) {
         $data = [

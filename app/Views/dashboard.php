@@ -22,7 +22,7 @@
             <div class="flex items-center justify-between">
                 <div>
                     <p class="text-sm text-gray-500">Total productos</p>
-                    <h2 class="text-3xl font-bold"><?= $totalProductos ?? 0 ?></h2>
+                    <h2 class="text-3xl font-bold"><a href="<?= base_url(relativePath: 'products') ?>"><?= $totalProductos ?? 0 ?></a></h2>
 
                 </div>
                 <div class="bg-blue-100 text-blue-600 p-3 rounded-full">
@@ -36,7 +36,7 @@
             <div class="flex items-center justify-between">
                 <div>
                     <p class="text-sm text-gray-500">Movimientos</p>
-                    <h2 class="text-3xl font-bold"><?= $totalMovimientos ?? 0 ?></h2>
+                    <h2 class="text-3xl font-bold"><a href="<?= base_url(relativePath: 'movements') ?>"><?= $totalMovimientos ?? 0 ?></a></h2>
                 </div>
                 <div class="bg-green-100 text-green-600 p-3 rounded-full">
                     <?= \Mdi\Mdi::mdi('swap-horizontal'); ?>
@@ -48,8 +48,8 @@
         <div class="bg-white rounded-xl shadow p-6 border border-gray-100">
             <div class="flex items-center justify-between">
                 <div>
-                    <p class="text-sm text-gray-500">Stock bajo</p>
-                    <h2 class="text-3xl font-bold text-red-500"><?= $totalStockBajo ?></h2>
+                    <p class="text-sm text-gray-500">Sin stock</p>
+                    <h2 class="text-3xl font-bold text-red-500"><?= $totalSinStock ?></h2>
                 </div>
                 <div class="bg-red-100 text-red-600 p-3 rounded-full">
                     <?= \Mdi\Mdi::mdi('alert-circle-outline'); ?>
@@ -133,35 +133,17 @@
         <div class="bg-white rounded-xl shadow p-6 border border-gray-100">
             <h2 class="text-lg font-semibold mb-4 flex items-center gap-2">
                 <?= \Mdi\Mdi::mdi('warehouse'); ?>
-                Productos con bajo stock
+                Productos sin stock
             </h2>
 
             <div class="space-y-4">
-
+            <?php foreach($productosSinStock as $producto): ?>
                 <div class="flex items-center justify-between p-3 border rounded-lg">
                     <div>
-                        <p class="font-medium">Camiseta blanca</p>
-                        <p class="text-xs text-gray-500">Stock mínimo: 10</p>
+                        <p class="font-medium"><?= $producto->nombre; ?></p>
                     </div>
-                    <span class="text-red-600 font-bold">4</span>
                 </div>
-
-                <div class="flex items-center justify-between p-3 border rounded-lg">
-                    <div>
-                        <p class="font-medium">Pantalón jean</p>
-                        <p class="text-xs text-gray-500">Stock mínimo: 15</p>
-                    </div>
-                    <span class="text-red-600 font-bold">7</span>
-                </div>
-
-                <div class="flex items-center justify-between p-3 border rounded-lg">
-                    <div>
-                        <p class="font-medium">Vestido floral</p>
-                        <p class="text-xs text-gray-500">Stock mínimo: 5</p>
-                    </div>
-                    <span class="text-red-600 font-bold">2</span>
-                </div>
-
+            <?php endforeach ?>
             </div>
         </div>
 

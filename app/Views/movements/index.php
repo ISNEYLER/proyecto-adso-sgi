@@ -11,7 +11,7 @@ Mdi::withIconsPath(__DIR__ . '/../../../node_modules/@mdi/svg/svg/');
     <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
       <i class="mdi mdi-magnify text-lg"><?php echo Mdi::mdi('magnify'); ?></i>
     </span>
-    <input type="text" placeholder="Buscar..." class="w-full pl-10 pr-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+    <input type="text" placeholder="Buscar..." class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-blue-400">
   </div>
 
   <!-- Botón principal -->

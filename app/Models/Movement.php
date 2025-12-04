@@ -110,6 +110,7 @@ class Movement extends Model
         $builder->join('ubicaciones uo', 'm.id_ubicacion_origen = uo.id');
         $builder->join('ubicaciones ud', 'm.id_ubicacion_destino = ud.id');
         $builder->join('tipos_movimientos tp', 'tp.id = m.id_tipo_movimiento');
+        $builder->orderBy('m.fecha', 'DESC');
 
         $query = $builder->get();
         return $query->getResultObject();

@@ -18,7 +18,12 @@ Mdi::withIconsPath(__DIR__ . '/../../../node_modules/@mdi/svg/svg/');
 
   
   <div class="flex flex-wrap justify-between items-center gap-4 mb-6"> <!-- Buscador con ícono -->
-    <!-- Botón principal -->
+    <div class="relative w-full md:w-1/3">
+      <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
+        <i class="mdi mdi-magnify text-lg"><?php echo Mdi::mdi('magnify'); ?></i>
+      </span>
+      <input type="text" placeholder="Buscar..." class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-blue-400">
+    </div>
     <a
       href="<?= base_url('inventory_adjustment/create')?>" class="flex items-center gap-2 bg-blue-600 hover:bg-blue-800 text-white px-5 py-2 rounded-lg shadow transition">
       <?php echo Mdi::mdi('plus'); ?>

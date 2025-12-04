@@ -30,12 +30,14 @@ $routes->get('categories/new', 'Categories::new');
 $routes->post('categories/save', 'Categories::save');
 $routes->get('categories/edit/(:num)', 'Categories::edit/$1');
 $routes->post('categories/update/(:num)', 'Categories::update/$1');
+$routes->post('categories/delete/(:num)','Categories::delete/$1');
 
 $routes->get('locations', 'Locations::index');
 $routes->get('locations/new', 'Locations::new');
 $routes->post('locations/save', 'Locations::save');
 $routes->get('locations/edit/(:num)', 'Locations::edit/$1');
 $routes->post('locations/update/(:num)', 'Locations::update/$1');
+$routes->post('locations/delete/(:num)','Locations::delete/$1');
 
 $routes->get('storages', 'Storages::index');
 $routes->get('storages/new', 'Storages::new');
