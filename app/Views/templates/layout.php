@@ -22,9 +22,8 @@
             <!-- Brand -->
             <div class="flex items-center">
                 <a href="/" class="flex items-center">
-                    <img src="" alt="" class="hidden md:block h-4 mt-1">
+                    <img src="<?= base_url('img/logo.svg') ?>" alt="" class="hidden md:block h-6 mt-1">
                     <img src="" alt="" class="block md:hidden h-6 mt-1">
-                    LOGO
                 </a>
             </div>
 

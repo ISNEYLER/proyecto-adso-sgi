@@ -26,29 +26,45 @@
             <!-- Almacén -->
             <div class="md:col-span-4">
                 <label class="block text-sm font-medium text-gray-700 mb-1">Almacén</label>
-                <select name="id_almacen" class="w-full rounded-lg border px-3 py-2 focus:outline-none focus:ring-2">
+                <select name="id_almacen" class="w-full rounded-lg border px-3 py-2 focus:outline-none focus:ring-2
+                    <?= isset($validation) && $validation->hasError('id_almacen')
+                                                ? 'border-red-500 focus:ring-red-400'
+                                                : (old('id_almacen') ? 'border-green-500 focus:ring-green-400' : 'border-gray-300 focus:ring-blue-400') ?>">
                     <option value="">Seleccione un almacén</option>
-                    <?php if(isset($storages)): ?>
                         <?php foreach($storages as $storage): ?>
                             <option value="<?= $storage->id ?>"
                                 <?= old('id_almacen') == $storage->id ? 'selected' : '' ?>>
                                 <?= esc($storage->nombre) ?>
                             </option>
                         <?php endforeach; ?>
-                    <?php endif; ?>
                 </select>
+                <?php if (isset($validation) && $validation->hasError('id_almacen')): ?>
+                    <p class="text-sm text-red-600 mt-1"><?= $validation->getError('id_almacen') ?></p>
+                <?php endif; ?>
             </div>
 
             <!-- Nombre de la ubicación -->
             <div class="md:col-span-4">
                 <label class="block text-sm font-medium text-gray-700 mb-1">Nombre de la ubicación</label>
-                <input type="text" name="nombre" placeholder="Estantería A - Pasillo 2" value="" class="w-full rounded-lg border px-3 py-2 focus:outline-none focus:ring-2">
+                <input type="text" name="nombre" placeholder="Estantería A - Pasillo 2" value="" class="w-full rounded-lg border px-3 py-2 focus:outline-none focus:ring-2
+                <?= isset($validation) && $validation->hasError('nombre')
+                                               ? 'border-red-500 focus:ring-red-400'
+                                               : (old('nombre') ? 'border-green-500 focus:ring-green-400' : 'border-gray-300 focus:ring-blue-400') ?>">
+                <?php if (isset($validation) && $validation->hasError('nombre')): ?>
+                    <p class="text-sm text-red-600 mt-1"><?= $validation->getError('nombre') ?></p>
+                <?php endif; ?>
             </div>
 
             <!-- Código de la ubicación -->
             <div class="md:col-span-4">
                 <label class="block text-sm font-medium text-gray-700 mb-1">Código de la ubicación</label>
-                <input type="text" name="codigo" placeholder="A2" value="" class="w-full rounded-lg border px-3 py-2 focus:outline-none focus:ring-2">
+                <input type="text" name="codigo" placeholder="A2" value="" class="w-full rounded-lg border px-3 py-2 focus:outline-none focus:ring-2
+                <?= isset($validation) && $validation->hasError('codigo')
+                                               ? 'border-red-500 focus:ring-red-400'
+                                               : (old('codigo') ? 'border-green-500 focus:ring-green-400' : 'border-gray-300 focus:ring-blue-400') ?>">
+                <?php if (isset($validation) && $validation->hasError('codigo')): ?>
+                    <p class="text-sm text-red-600 mt-1"><?= $validation->getError('codigo') ?></p>
+                <?php endif; ?>
             </div>
 
         </form>

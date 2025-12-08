@@ -62,9 +62,6 @@ Mdi::withIconsPath(__DIR__ . '/../../../node_modules/@mdi/svg/svg/');
               <button onclick="openDeleteModal(<?= $producto->id ?>, '<?= esc($producto->nombre) ?>')" class="text-red-600 hover:text-red-800">
                 <?= Mdi::mdi('delete'); ?>
               </button>
-              <a
-                class="btn btn-success" href=""><?php echo Mdi::mdi('arrow-right-bold'); ?>
-              </a>
             </div>
           </td>
         </tr>

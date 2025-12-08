@@ -1,10 +1,9 @@
 <?php
 
 namespace App\Controllers;
-
 use App\Models\Product;
 use App\Models\Category;
-use App\Models\Stock;
+
 
 class Products extends BaseController
 {

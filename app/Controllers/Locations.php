@@ -30,18 +30,61 @@ class Locations extends BaseController
         return view('locations/new', $data);
     }
 
+
     public function save(){
         $LocationModel = new Location();
 
         $data = [
-            'nombre' => $this->request->getPost('nombre'),
-            'codigo' => $this->request->getPost('codigo'),
+            'nombre'     => $this->request->getPost('nombre'),
+            'codigo'     => $this->request->getPost('codigo'),
             'id_almacen' => $this->request->getPost('id_almacen')
         ];
 
+        foreach ($data as $key => $value) {
+            if ($value === '') {
+                $data[$key] = null;
+            }
+        }
+
+
+        $rules = [
+            'nombre' => [
+                'rules'  => 'required|min_length[3]',
+                'errors' => [
+                    'required'   => 'El nombre es obligatorio',
+                    'min_length' => 'El nombre debe tener mínimo 3 caracteres'
+                ]
+            ],
+            'codigo' => [
+                'rules'  => 'required|is_unique[ubicaciones.codigo]',
+                'errors' => [
+                    'required'  => 'El código es obligatorio',
+                    'is_unique' => 'Ya hay una ubicación con este código'
+                ]
+            ],
+            'id_almacen' => [
+                'rules'  => 'required|is_not_unique[almacenes.id]',
+                'errors' => [
+                    'required'  => 'Debes seleccionar un almacén válido',
+                    'is_unique' => 'El almacén seleccionado no es válido'
+                ]
+            ]
+        ];
+
+        if (!$this->validateData($data,$rules)) {
+            return view('locations/new', [
+                'title' => 'Crear ubicacion',
+                'storages' => model('Storage')->findAll(),
+                'validation' => $this->validator
+            ]);
+        }
+
         $LocationModel->insert($data);
+
+        session()->setFlashdata('msg', 'Ubicación registrada correctamente');
         return redirect()->to('locations');
     }
+
 
 
     public function edit($id) {
@@ -110,6 +153,45 @@ class Locations extends BaseController
             'codigo'    => $this->request->getPost('codigo'),
             'id_almacen'    => $this->request->getPost('id_almacen')
         ];
+
+        foreach ($data as $key => $value) {
+            if ($value === '') {
+                $data[$key] = null;
+            }
+        }
+
+        $rules = [
+            'nombre' => [
+                'rules'  => 'required|min_length[3]',
+                'errors' => [
+                    'required'   => 'El nombre es obligatorio',
+                    'min_length' => 'El nombre debe tener mínimo 3 caracteres'
+                ]
+            ],
+            'codigo' => [
+                'rules'  => 'required|is_unique[ubicaciones.codigo]',
+                'errors' => [
+                    'required'  => 'El código es obligatorio',
+                    'is_unique' => 'Ya hay una ubicación con este código'
+                ]
+            ],
+            'id_almacen' => [
+                'rules'  => 'required|is_not_unique[almacenes.id]',
+                'errors' => [
+                    'required'  => 'Debes seleccionar un almacén válido',
+                    'is_unique' => 'El almacén seleccionado no es válido'
+                ]
+            ]
+        ];
+
+        if (!$this->validateData($data,$rules)) {
+            return view('locations/edit', [
+                'title' => 'Crear ubicacion',
+                'storages' => model('Storage')->findAll(),
+                'location' => model('Location')->find($id),
+                'validation' => $this->validator
+            ]);
+        }
 
         $locationModel = new Location();
         $locationModel->update($id,$data);
