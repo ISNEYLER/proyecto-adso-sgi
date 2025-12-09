@@ -19,7 +19,7 @@ class InventoryAdjustment extends BaseController
         $productoModel = new Product();
         $products = $productoModel->findAll();
         $locationModel = new Location();
-        $locations = $locationModel->findAll();
+        $locations = $locationModel->getLocationsWithStorage();
 
         $data = ["title" => 'Crear ajuste de inventario','locations'=> $locations,'products'=> $products];
         return view('inventory_adjustment/create',$data);

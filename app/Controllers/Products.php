@@ -56,11 +56,11 @@ class Products extends BaseController
 
         $rules = [
             'nombre' => [
-                'rules' => 'required|min_length[3]|max_length[30]',
+                'rules' => 'required|min_length[3]|max_length[60]',
                 'errors' => [
                     'required'   => 'El nombre del producto es obligatorio.',
                     'min_length' => 'El nombre debe tener al menos 3 caracteres.',
-                    'max_length' => 'El nombre no puede superar los 30 caracteres.'
+                    'max_length' => 'El nombre no puede superar los 60 caracteres.'
                 ]
             ],
             'descripcion' => [
@@ -189,11 +189,11 @@ class Products extends BaseController
 
         $rules = [
             'nombre' => [
-                'rules' => 'required|min_length[3]|max_length[30]',
+                'rules' => 'required|min_length[3]|max_length[60]',
                 'errors' => [
                     'required'   => 'El nombre del producto es obligatorio.',
                     'min_length' => 'El nombre debe tener al menos 3 caracteres.',
-                    'max_length' => 'El nombre no puede superar los 30 caracteres.'
+                    'max_length' => 'El nombre no puede superar los 60 caracteres.'
                 ]
             ],
             'descripcion' => [

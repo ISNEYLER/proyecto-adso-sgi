@@ -97,6 +97,7 @@ class Movement extends Model
     public function obtenerMovimientosConNombres()
     {
         $builder = $this->db->table('movimientos m');
+
         $builder->select('
             m.id,
             tp.nombre AS tipo,
@@ -104,17 +105,26 @@ class Movement extends Model
             uo.nombre AS ubicacion_origen,
             ud.nombre AS ubicacion_destino,
             m.cantidad,
-            m.fecha
+            m.fecha,
+            a_o.nombre AS nombre_almacen_origen,
+            a_d.nombre AS nombre_almacen_destino
         ');
+
+        // JOINs principales
         $builder->join('productos p', 'm.id_producto = p.id');
         $builder->join('ubicaciones uo', 'm.id_ubicacion_origen = uo.id');
         $builder->join('ubicaciones ud', 'm.id_ubicacion_destino = ud.id');
         $builder->join('tipos_movimientos tp', 'tp.id = m.id_tipo_movimiento');
+
+        // JOIN de almacenes con alias distintos
+        $builder->join('almacenes a_o', 'uo.id_almacen = a_o.id');
+        $builder->join('almacenes a_d', 'ud.id_almacen = a_d.id');
+
         $builder->orderBy('m.fecha', 'DESC');
 
-        $query = $builder->get();
-        return $query->getResultObject();
+        return $builder->get()->getResultObject();
     }
+
 
     public function obtenerMovimientosConNombresDash($limit = 5)
     {

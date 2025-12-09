@@ -17,9 +17,9 @@ Mdi::withIconsPath(__DIR__ . '/../../../node_modules/@mdi/svg/svg/');
 
   <!-- Botón principal -->
   <a
-    href="<?= base_url('locations/new') ?>" class="flex items-center gap-2 bg-blue-600 hover:bg-blue-800 text-white px-5 py-2 rounded-lg shadow transition">
+    href="<?= base_url('warehouses/new') ?>" class="flex items-center gap-2 bg-blue-600 hover:bg-blue-800 text-white px-5 py-2 rounded-lg shadow transition">
     <?php echo Mdi::mdi('plus'); ?>
-    Crear Ubicacion
+    Crear Almacen
   </a>
 </div>
 
@@ -41,25 +41,25 @@ Mdi::withIconsPath(__DIR__ . '/../../../node_modules/@mdi/svg/svg/');
     <thead class="bg-gray-100 text-gray-700">
       <tr>
         <th class="px-4 py-3 text-center">ID</th>
-        <th class="px-4 py-3 text-center">Nombre</th>
-        <th class="px-4 py-3 text-center">Código</th>
         <th class="px-4 py-3 text-center">Almacen</th>
+        <th class="px-4 py-3 text-center">Código</th>
+        <th class="px-4 py-3 text-center">Dirección</th>
         <th class="px-4 py-3 text-center">Operaciones</th>
       </tr>
     </thead>
     <tbody>
-      <?php foreach ($locations as $location): ?>
+      <?php foreach ($warehouses as $warehouse): ?>
         <tr class="hover:bg-gray-50">
-          <td class="px-4 py-3 text-center"><?= esc($location->id); ?></td>
-          <td class="px-4 py-3 text-center"><?= $location->nombre; ?></td>
-          <td class="px-4 py-3 text-center"><?= $location->codigo; ?></td>
-          <td class="px-4 py-3 text-center"><?= $location->nombre_almacen; ?></td>
+          <td class="px-4 py-3 text-center"><?= $warehouse->id; ?></td>
+          <td class="px-4 py-3 text-center"><?= $warehouse->nombre; ?></td>
+          <td class="px-4 py-3 text-center"><?= $warehouse->codigo; ?></td>
+          <td class="px-4 py-3 text-center"><?= $warehouse->direccion; ?></td>
           <td class="px-4 py-3">
             <div class="flex item-center justify-center">
               <a
-                class="text-blue-600 hover:text-blue-800" href="<?= base_url('locations/edit/' . $location->id) ?>"><?php echo Mdi::mdi('pencil'); ?>
+                class="text-blue-600 hover:text-blue-800" href="<?= base_url('warehouses/edit/' . $warehouse->id) ?>"><?php echo Mdi::mdi('pencil'); ?>
               </a>
-              <button onclick="openDeleteModal(<?= $location->id ?>, '<?= esc($location->nombre) ?>')" class="text-red-600 hover:text-red-800">
+              <button onclick="openDeleteModal(<?= $warehouse->id ?>, '<?= esc($warehouse->nombre) ?>')" class="text-red-600 hover:text-red-800">
                 <?= Mdi::mdi('delete'); ?>
               </button>
             </div>
@@ -79,7 +79,7 @@ Mdi::withIconsPath(__DIR__ . '/../../../node_modules/@mdi/svg/svg/');
         </h2>
 
         <p class="text-sm text-gray-600 mb-4">
-            ¿Está seguro que desea eliminar la ubicación
+            ¿Está seguro que desea eliminar el almacen
             <span id="deleteName" class="font-bold"></span>?
         </p>
 
@@ -116,7 +116,7 @@ function openDeleteModal(id, nombre) {
     const form   = document.getElementById('deleteForm');
 
     name.textContent = nombre;
-    form.action = "<?= base_url('locations/delete/') ?>" + id;
+    form.action = "<?= base_url('warehouses/delete/') ?>" + id;
 
     modal.classList.remove('hidden');
     modal.classList.add('flex');

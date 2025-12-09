@@ -43,4 +43,13 @@ class Location extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    public function getLocationsWithStorage()
+    {
+        return $this->select('ubicaciones.*, almacenes.nombre AS nombre_almacen')
+                    ->join('almacenes', 'almacenes.id = ubicaciones.id_almacen')
+                    ->findAll();
+    }   
+
+
 }

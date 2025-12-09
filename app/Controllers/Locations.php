@@ -12,7 +12,7 @@ class Locations extends BaseController
     {
         $locationModel = new Location();
         // $result = $productoModel->findAll();
-        $result = $locationModel->findAll();
+        $result = $locationModel->getLocationsWithStorage();
 
         $data = ['title' => 'Ubicaciones', 'locations' => $result];
         return view('locations/index', $data);
@@ -169,7 +169,7 @@ class Locations extends BaseController
                 ]
             ],
             'codigo' => [
-                'rules'  => 'required|is_unique[ubicaciones.codigo]',
+                'rules'  => "required|is_unique[ubicaciones.codigo,id,{$id}]",
                 'errors' => [
                     'required'  => 'El código es obligatorio',
                     'is_unique' => 'Ya hay una ubicación con este código'
