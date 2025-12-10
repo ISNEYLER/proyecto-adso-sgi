@@ -44,7 +44,7 @@
 
         <!-- Dropdown -->
         <div class="absolute right-0 top-full pt-2 w-48 bg-white rounded-lg shadow-lg hidden group-hover:block">
-            <a href="/admin/user/profile" class="block px-4 py-3 hover:bg-gray-100">
+            <a href="#" class="block px-4 py-3 hover:bg-gray-100">
                 <strong><?= esc($user->username ?? 'Usuario') ?></strong>
                 <div class="text-xs text-gray-500"><?= esc($user->email) ?></div>
             </a>

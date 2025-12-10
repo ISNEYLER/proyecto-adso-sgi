@@ -148,30 +148,6 @@
         </div>
 
     </div>
-
-    <!-- Accesos rápidos -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-
-        <a href="<?= base_url('products') ?>" class="p-6 bg-blue-600 text-white rounded-xl shadow hover:bg-blue-700 transition">
-            <h3 class="text-lg font-semibold mb-2">Ver productos</h3>
-            <p class="text-sm opacity-80">Administra tu catálogo completo</p>
-        </a>
-
-        <a href="<?= base_url('movements') ?>" class="p-6 bg-green-600 text-white rounded-xl shadow hover:bg-green-700 transition">
-            <h3 class="text-lg font-semibold mb-2">Movimientos</h3>
-            <p class="text-sm opacity-80">Entradas y salidas de inventario</p>
-        </a>
-
-        <a href="<?= base_url('stocks') ?>" class="p-6 bg-purple-600 text-white rounded-xl shadow hover:bg-purple-700 transition">
-            <h3 class="text-lg font-semibold mb-2">Existencias</h3>
-            <p class="text-sm opacity-80">Consulta el stock disponible</p>
-        </a>
-
-    </div>
-
 </div>
-
 <?= $this->endSection(); ?>
-
-
 <?php echo $this->endSection(); ?>
