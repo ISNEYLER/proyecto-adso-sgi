@@ -46,7 +46,7 @@ Mdi::withIconsPath(__DIR__ . '/../../../node_modules/@mdi/svg/svg/');
           <tr class="hover:bg-gray-50">
             <td class="px-4 py-3 text-center"><?= esc($stock->producto); ?></td>
             <td class="px-4 py-3 text-center"><?= esc($stock->cantidad); ?></td>
-            <td class="px-4 py-3 text-center"><?= esc($stock->ubicacion); ?></td>
+            <td class="px-4 py-3 text-center"><?= esc($stock->ubicacion." / ".$stock->nombre_almacen); ?></td>
           </tr>
         <?php endforeach; ?>
       </tbody>

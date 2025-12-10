@@ -52,10 +52,14 @@ class Stock extends Model
             p.id AS id_producto,
             u.nombre AS ubicacion,
             u.id AS id_ubicacion,
-            e.cantidad
+            u.id_almacen AS id_almacen_ubicacion,
+            e.cantidad,
+            a.id AS id_almacen,
+            a.nombre AS nombre_almacen
         ');
         $builder->join('productos p','e.id_producto = p.id');
         $builder->join('ubicaciones u','e.id_ubicacion = u.id');
+        $builder->join('almacenes a','a.id = u.id_almacen');
         $query = $builder->get();
         return $query->getResultObject();
     }

@@ -17,21 +17,21 @@ Mdi::withIconsPath(__DIR__ . '/../../../node_modules/@mdi/svg/svg/');
 
   <!-- Botón principal -->
   <a
-    href="<?= base_url('products/new') ?>" class="flex items-center gap-2 bg-blue-600 hover:bg-blue-800 text-white px-5 py-2 rounded-lg shadow transition">
+    href="<?= base_url('warehouses/new') ?>" class="flex items-center gap-2 bg-blue-600 hover:bg-blue-800 text-white px-5 py-2 rounded-lg shadow transition">
     <?php echo Mdi::mdi('plus'); ?>
-    Nuevo Producto
+    Crear Almacen
   </a>
 </div>
 
 <?php if (session()->getFlashdata('error')): ?>
-  <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-5">
-      <?= session()->getFlashdata('error') ?>
+  <div class="mb-4 p-4 bg-red-100 text-red-700 rounded-lg">
+    <?= session()->getFlashdata('error') ?>
   </div>
 <?php endif; ?>
 
 <?php if (session()->getFlashdata('msg')): ?>
-  <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-5">
-      <?= session()->getFlashdata('msg') ?>
+  <div class="mb-4 p-4 bg-green-100 text-green-700 rounded-lg">
+    <?= session()->getFlashdata('msg') ?>
   </div>
 <?php endif; ?>
 
@@ -40,30 +40,30 @@ Mdi::withIconsPath(__DIR__ . '/../../../node_modules/@mdi/svg/svg/');
   <table class="min-w-full text-sm">
     <thead class="bg-gray-100 text-gray-700">
       <tr>
-        <th class="px-4 py-3 text-center">Producto</th>
-        <th class="px-4 py-3 text-center">Precio</th>
-        <th class="px-4 py-3 text-center">Costo</th>
-        <th class="px-4 py-3 text-center">Cantidad</th>
-        <th class="px-4 py-3 text-center">Acciones</th>
+        <th class="px-4 py-3 text-center">ID</th>
+        <th class="px-4 py-3 text-center">Almacen</th>
+        <th class="px-4 py-3 text-center">Código</th>
+        <th class="px-4 py-3 text-center">Dirección</th>
+        <th class="px-4 py-3 text-center">Operaciones</th>
       </tr>
     </thead>
     <tbody>
-      <?php foreach ($products as $producto): ?>
+      <?php foreach ($warehouses as $warehouse): ?>
         <tr class="hover:bg-gray-50">
-          <td class="px-4 py-3 text-center"><?= esc($producto->nombre); ?></td>
-          <td class="px-4 py-3 text-center"><?= $producto->valor; ?></td>
-          <td class="px-4 py-3 text-center"><?= $producto->costo; ?></td>
-          <td class="px-4 py-3 text-center"><?= $producto->cantidad; ?></td>
-          <td class="px-4 py-3 text-center">
+          <td class="px-4 py-3 text-center"><?= $warehouse->id; ?></td>
+          <td class="px-4 py-3 text-center"><?= $warehouse->nombre; ?></td>
+          <td class="px-4 py-3 text-center"><?= $warehouse->codigo; ?></td>
+          <td class="px-4 py-3 text-center"><?= $warehouse->direccion; ?></td>
+          <td class="px-4 py-3">
             <div class="flex item-center justify-center">
               <a
-                class="text-blue-600 hover:text-blue-800" href="<?= base_url('products/edit/' . $producto->id) ?>"><?php echo Mdi::mdi('pencil'); ?>
+                class="text-blue-600 hover:text-blue-800" href="<?= base_url('warehouses/edit/' . $warehouse->id) ?>"><?php echo Mdi::mdi('pencil'); ?>
               </a>
-              <button onclick="openDeleteModal(<?= $producto->id ?>, '<?= esc($producto->nombre) ?>')" class="text-red-600 hover:text-red-800">
+              <button onclick="openDeleteModal(<?= $warehouse->id ?>, '<?= esc($warehouse->nombre) ?>')" class="text-red-600 hover:text-red-800">
                 <?= Mdi::mdi('delete'); ?>
               </button>
             </div>
-          </td>
+            </td>
         </tr>
       <?php endforeach; ?>
     </tbody>
@@ -79,7 +79,7 @@ Mdi::withIconsPath(__DIR__ . '/../../../node_modules/@mdi/svg/svg/');
         </h2>
 
         <p class="text-sm text-gray-600 mb-4">
-            ¿Está seguro que desea eliminar el producto
+            ¿Está seguro que desea eliminar el almacen
             <span id="deleteName" class="font-bold"></span>?
         </p>
 
@@ -116,7 +116,7 @@ function openDeleteModal(id, nombre) {
     const form   = document.getElementById('deleteForm');
 
     name.textContent = nombre;
-    form.action = "<?= base_url('products/delete/') ?>" + id;
+    form.action = "<?= base_url('warehouses/delete/') ?>" + id;
 
     modal.classList.remove('hidden');
     modal.classList.add('flex');
@@ -139,7 +139,6 @@ document.getElementById('deleteModal').addEventListener('click', function(e) {
 
 });
 </script>
-
 
 <?php echo $this->endSection(); ?>
 

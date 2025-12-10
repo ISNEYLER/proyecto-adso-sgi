@@ -2,6 +2,7 @@
 
 namespace Config;
 
+use App\Validation\WareHouseRules;
 use CodeIgniter\Config\BaseConfig;
 use CodeIgniter\Validation\StrictRules\CreditCardRules;
 use CodeIgniter\Validation\StrictRules\FileRules;
@@ -30,7 +31,8 @@ class Validation extends BaseConfig
         CreditCardRules::class,
         ProductRules::class,
         CategoryRules::class,
-        LocationRules::class
+        LocationRules::class,
+        WareHouseRules::class
     ];
 
     /**

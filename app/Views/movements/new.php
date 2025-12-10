@@ -29,7 +29,7 @@
                 <select name="ubicacion_origen"
                         class="w-full rounded-lg border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400">
                     <?php foreach($locations as $location): ?>
-                        <option value="<?= $location->id ?>"><?= $location->nombre ?></option>
+                        <option value="<?= $location->id ?>"><?= $location->nombre_almacen." / ".$location->nombre;?></option>
                     <?php endforeach; ?>
                 </select>
             </div>
@@ -40,7 +40,7 @@
                 <select name="ubicacion_destino"
                         class="w-full rounded-lg border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400">
                     <?php foreach($locations as $location): ?>
-                        <option value="<?= $location->id ?>"><?= $location->nombre ?></option>
+                        <option value="<?= $location->id ?>"><?= $location->nombre_almacen." / ".$location->nombre?></option>
                     <?php endforeach; ?>
                 </select>
             </div>

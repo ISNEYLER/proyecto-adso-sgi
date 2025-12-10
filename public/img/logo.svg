@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Capa_2" data-name="Capa 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 377.79 173.49">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #153551;
+      }
+
+      .cls-2 {
+        fill: #fff;
+      }
+
+      .cls-3 {
+        fill: #2d343b;
+        font-family: Roboto-Bold, Roboto;
+        font-size: 120px;
+        font-variation-settings: 'wght' 700, 'wdth' 100;
+        font-weight: 700;
+      }
+
+      .cls-4 {
+        fill: #1d7ea4;
+      }
+
+      .cls-5 {
+        fill: #183450;
+      }
+
+      .cls-6 {
+        fill: #163651;
+      }
+
+      .cls-7 {
+        fill: #2e8ea0;
+      }
+    </style>
+  </defs>
+  <g id="Capa_2-2" data-name="Capa 2">
+    <g>
+      <g>
+        <rect class="cls-6" y="26.74" width="146.75" height="146.75" rx="15.36" ry="15.36"/>
+        <rect class="cls-2" x="11.87" y="38.61" width="123.02" height="123.02" rx="15.36" ry="15.36"/>
+        <rect class="cls-1" x="35.6" y="19.69" width="75.55" height="24.08" rx="7.39" ry="7.39"/>
+        <g>
+          <circle class="cls-5" cx="73.38" cy="16.36" r="16.36"/>
+          <circle class="cls-2" cx="73.38" cy="16.36" r="6.73"/>
+        </g>
+        <rect class="cls-4" x="25.47" y="66.31" width="72.74" height="9.48" rx="3.75" ry="3.75"/>
+        <rect class="cls-4" x="25.47" y="90.64" width="57.84" height="9.48" rx="3.75" ry="3.75"/>
+        <rect class="cls-4" x="25.47" y="114.24" width="40.57" height="9.48" rx="3.75" ry="3.75"/>
+        <g>
+          <rect class="cls-7" x="101.29" y="94.96" width="92.38" height="17.46" rx="8.73" ry="8.73" transform="translate(-30.13 134.65) rotate(-45)"/>
+          <rect class="cls-7" x="81.84" y="108.72" width="53.22" height="17.46" rx="8.73" ry="8.73" transform="translate(102.09 277.19) rotate(-135)"/>
+        </g>
+      </g>
+      <text class="cls-3" transform="translate(187 140.2)"><tspan x="0" y="0">SGI</tspan></text>
+    </g>
+  </g>
+</svg>

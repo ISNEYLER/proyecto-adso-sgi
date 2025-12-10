@@ -53,7 +53,7 @@ Mdi::withIconsPath(__DIR__ . '/../../../node_modules/@mdi/svg/svg/');
           <td class="px-4 py-3 text-center"><?= esc($location->id); ?></td>
           <td class="px-4 py-3 text-center"><?= $location->nombre; ?></td>
           <td class="px-4 py-3 text-center"><?= $location->codigo; ?></td>
-          <td class="px-4 py-3 text-center"><?= $location->id_almacen; ?></td>
+          <td class="px-4 py-3 text-center"><?= $location->nombre_almacen; ?></td>
           <td class="px-4 py-3">
             <div class="flex item-center justify-center">
               <a

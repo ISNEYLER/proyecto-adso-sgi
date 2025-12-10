@@ -54,8 +54,8 @@ Mdi::withIconsPath(__DIR__ . '/../../../node_modules/@mdi/svg/svg/');
               <?= esc($movement->tipo) ?>
           </span>
           </td>
-          <td class="px-4 py-3 text-center"><?= esc($movement->ubicacion_origen); ?></td>
-          <td class="px-4 py-3 text-center"><?= esc($movement->ubicacion_destino); ?></td>
+          <td class="px-4 py-3 text-center"><?= esc($movement->nombre_almacen_origen." / " .$movement->ubicacion_origen); ?></td>
+          <td class="px-4 py-3 text-center"><?= esc($movement->nombre_almacen_destino." / " .$movement->ubicacion_destino); ?></td>
           <td class="px-4 py-3 text-center"><?= esc($movement->cantidad); ?></td>
         </tr>
       <?php endforeach; ?>

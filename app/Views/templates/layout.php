@@ -22,9 +22,8 @@
             <!-- Brand -->
             <div class="flex items-center">
                 <a href="/" class="flex items-center">
-                    <img src="" alt="" class="hidden md:block h-4 mt-1">
+                    <img src="<?= base_url('img/logo.svg') ?>" alt="" class="hidden md:block h-6 mt-1">
                     <img src="" alt="" class="block md:hidden h-6 mt-1">
-                    LOGO
                 </a>
             </div>
 
@@ -105,8 +104,12 @@
                             <ul class="ml-4 border-l border-gray-200 mt-2 space-y-1">
                                 <li>
                                     <a href="<?= base_url(relativePath: 'locations') ?>" class="flex items-center gap-2 px-4 py-1 text-gray-700 hover:bg-gray-100">
-                                        <?php echo Mdi::mdi('mdi-store'); ?>
+                                        <?php echo Mdi::mdi('map-marker-multiple'); ?>
                                         <span>Ubicaciones</span>
+                                    </a>
+                                    <a href="<?= base_url(relativePath: 'warehouses') ?>" class="flex items-center gap-2 px-4 py-1 text-gray-700 hover:bg-gray-100">
+                                        <?php echo Mdi::mdi('warehouse'); ?>
+                                        <span>Almacenes</span>
                                     </a>
                                 </li>
                             </ul>
@@ -117,7 +120,7 @@
                             <a href="<?= base_url('stocks') ?>"
                                 class="flex items-center gap-2 px-4 py-2 text-gray-700 hover:bg-gray-100">
                                 <i class="mdi mdi-account-multiple"></i>
-                                <?php echo Mdi::mdi('warehouse'); ?>
+                                <?php echo Mdi::mdi('counter'); ?>
                                 <span>Existencias</span>
                             </a>
                         </li>

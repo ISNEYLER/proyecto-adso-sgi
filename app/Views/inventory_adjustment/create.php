@@ -33,7 +33,7 @@
 
                     <?php foreach($locations as $location): ?>
                         <option value="<?= $location->id ?>">
-                            <?= $location->nombre ?>
+                            <?= $location->nombre_almacen." / ".$location->nombre; ?>
                         </option>
                     <?php endforeach; ?>
                 </select>

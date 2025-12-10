@@ -6,6 +6,15 @@
 
     <div class="w-full max-w-md bg-white rounded-2xl shadow-lg p-8">
 
+        <!-- LOGO -->
+        <div class="flex justify-center mb-6">
+            <img 
+                src="<?= base_url('img/logo.svg') ?>" 
+                alt="Logo" 
+                class="h-10"
+            >
+        </div>
+
         <h1 class="text-2xl font-bold text-center mb-8 text-gray-800">
             <?= lang('Auth.login') ?>
         </h1>
@@ -63,7 +72,7 @@
                     class="w-full rounded-lg border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600"
                 >
             </div>
-            
+
             <!-- BOTÓN -->
             <button
                 type="submit"
