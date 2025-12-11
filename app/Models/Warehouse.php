@@ -4,7 +4,7 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class Storage extends Model
+class Warehouse extends Model
 {
     protected $table            = 'almacenes';
     protected $primaryKey       = 'id';

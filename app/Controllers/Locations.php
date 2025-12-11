@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\Location;
-use App\Models\Storage;
+use App\Models\Warehouse;
 
 class Locations extends BaseController
 {
@@ -12,7 +12,7 @@ class Locations extends BaseController
     {
         $locationModel = new Location();
         // $result = $productoModel->findAll();
-        $result = $locationModel->getLocationsWithStorage();
+        $result = $locationModel->getLocationsWithWarehouse();
 
         $data = ['title' => 'Ubicaciones', 'locations' => $result];
         return view('locations/index', $data);
@@ -20,7 +20,7 @@ class Locations extends BaseController
 
     public function new()
     {
-        $storageModel = new Storage();
+        $storageModel = new Warehouse();
         $result = $storageModel->findAll();
 
         $data = [
@@ -96,7 +96,7 @@ class Locations extends BaseController
         $LocationModel = new Location();
         $locationResult = $LocationModel->find($id);
 
-        $storageModel = new Storage();
+        $storageModel = new Warehouse();
         $storageResult = $storageModel->findAll();
 
         $data = [
