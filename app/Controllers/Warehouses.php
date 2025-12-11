@@ -3,13 +3,13 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
-use App\Models\Storage;
+use App\Models\Warehouse;
 
-class Storages extends BaseController
+class Warehouses extends BaseController
 {
     public function index()
     {
-        $wareHouse = new Storage();
+        $wareHouse = new Warehouse();
         $result = $wareHouse->findAll();
 
         $data = ['title' => 'Almacenes', 'warehouses' => $result];
@@ -17,13 +17,13 @@ class Storages extends BaseController
     }
 
     public function new(){
-        $wareHouse = new Storage();
+        $wareHouse = new Warehouse();
         $data = ['title' => 'Almacenes'];
         return view('warehouses/new', $data);
     }
 
     public function save(){
-        $wareHouse = new Storage();
+        $wareHouse = new Warehouse();
 
         $data = [
             'nombre'     => $this->request->getPost('nombre'),
@@ -81,7 +81,7 @@ class Storages extends BaseController
             return redirect()->to('warehouses');
         }
 
-        $storageModel = new Storage();
+        $storageModel = new Warehouse();
         $storageResult = $storageModel->find($id);
 
         $data = [
@@ -94,7 +94,7 @@ class Storages extends BaseController
     }
 
     public function update($id){
-        $wareHouse = new Storage();
+        $wareHouse = new Warehouse();
 
         $data = [
             'nombre'     => $this->request->getPost('nombre'),
@@ -152,7 +152,7 @@ class Storages extends BaseController
             return redirect()->to('warehouses');
         }
 
-        $wareHouseModel = new Storage();
+        $wareHouseModel = new Warehouse();
         $location = $wareHouseModel->find($id);
 
         if (!$location) {
