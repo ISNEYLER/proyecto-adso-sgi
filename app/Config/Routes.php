@@ -39,12 +39,12 @@ $routes->get('locations/edit/(:num)', 'Locations::edit/$1');
 $routes->post('locations/update/(:num)', 'Locations::update/$1');
 $routes->post('locations/delete/(:num)','Locations::delete/$1');
 
-$routes->get('warehouses', 'Storages::index');
-$routes->get('warehouses/new', 'Storages::new');
-$routes->get('warehouses/edit/(:num)', 'Storages::edit/$1');
-$routes->post('warehouses/save', 'Storages::save');
-$routes->post('warehouses/update/(:num)', 'Storages::update/$1');
-$routes->post('warehouses/delete/(:num)','Storages::delete/$1');
+$routes->get('warehouses', 'Warehouses::index');
+$routes->get('warehouses/new', 'Warehouses::new');
+$routes->get('warehouses/edit/(:num)', 'Warehouses::edit/$1');
+$routes->post('warehouses/save', 'Warehouses::save');
+$routes->post('warehouses/update/(:num)', 'Warehouses::update/$1');
+$routes->post('warehouses/delete/(:num)','Warehouses::delete/$1');
 
 
 service('auth')->routes($routes);
