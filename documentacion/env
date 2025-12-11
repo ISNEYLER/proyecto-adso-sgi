@@ -1,0 +1,16 @@
+
+# Entorno de la aplicación
+CI_ENVIRONMENT = 
+# Url de la aplicación, pueder ser http://localhost o http://localhost:puerto
+app_baseURL = ''
+database.default.hostname = 127.0.0.1
+# Nombre de la base de datos
+database.default.database = 
+# Usuario de la base de datos
+database.default.username =
+# Contraseña de la base de datos
+database.default.password =
+#Controlado de la base de datos
+database.default.DBDriver = MySQLi
+#Puerto de la base de datos
+database.default.port = 3306
