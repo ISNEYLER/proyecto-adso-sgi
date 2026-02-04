@@ -14,10 +14,9 @@ Mdi::withIconsPath(__DIR__ . '/../../../node_modules/@mdi/svg/svg/');
     </span>
     <input type="text" placeholder="Buscar..." class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-blue-400">
   </div>
-
   <!-- Botón principal -->
   <a
-    href="<?= base_url('products/new') ?>" class="flex items-center gap-2 bg-blue-600 hover:bg-blue-800 text-white px-5 py-2 rounded-lg shadow transition">
+    href="<?= base_url('products/new') ?>" class="flex items-center gap-2 bg-green-600 hover:bg-green-800 text-white px-5 py-2 rounded-lg shadow transition">
     <?php echo Mdi::mdi('plus'); ?>
     Nuevo Producto
   </a>
