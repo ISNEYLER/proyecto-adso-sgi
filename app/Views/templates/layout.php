@@ -12,67 +12,77 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo ($title); ?></title>
     <link rel="stylesheet" href="<?= base_url('css/styles.css') ?>">
+    <style>
+        * {
+            transition: all 0.3s ease;
+        }
+        body {
+            background: linear-gradient(135deg, #ABC8F5 0%, #D6E9FF 100%);
+            min-height: 100vh;
+        }
+    </style>
 </head>
 
 <body>
     <!-- Navbar -->
-    <nav class="fixed top-0 left-0 right-0 z-30 bg-white shadow-sm h-14 flex items-center">
-        <div class="w-full flex justify-between items-center px-6">
+    <nav class="fixed top-0 left-0 right-0 z-30 bg-white shadow-lg h-16 flex items-center border-b-4 border-[#3B82F6]">
+        <div class="w-full flex justify-between items-center px-8">
 
             <!-- Brand -->
             <div class="flex items-center">
                 <a href="/" class="flex items-center">
-                    <img src="<?= base_url('img/logo.svg') ?>" alt="" class="hidden md:block h-6 mt-1">
-                    <img src="" alt="" class="block md:hidden h-6 mt-1">
+                    <img src="<?= base_url('img/logo.svg') ?>" alt="Logo" class="hidden md:block h-8 mt-1">
+                    <img src="" alt="Logo Mobile" class="block md:hidden h-8 mt-1">
                 </a>
             </div>
 
             <!-- Burger -->
-            <button class="md:hidden flex flex-col justify-center items-center w-10 h-10 hover:bg-gray-100 rounded">
-                <span class="w-5 h-0.5 bg-gray-600 mb-1"></span>
-                <span class="w-5 h-0.5 bg-gray-600 mb-1"></span>
-                <span class="w-5 h-0.5 bg-gray-600"></span>
+            <button class="md:hidden flex flex-col justify-center items-center w-10 h-10 hover:bg-blue-50 rounded-lg">
+                <span class="w-5 h-0.5 bg-blue-900 mb-1"></span>
+                <span class="w-5 h-0.5 bg-blue-900 mb-1"></span>
+                <span class="w-5 h-0.5 bg-blue-900"></span>
             </button>
 
             <!-- Menu -->
-            <div class="hidden md:flex items-center space-x-4">
-    <div class="relative group">
-        <!-- Avatar -->
-        <button class="flex items-center justify-center w-8 h-8 rounded-full bg-gray-300 font-bold text-sm uppercase">
-            <?= $user ? substr($user->username ?? $user->email, 0, 1) : '?' ?>
-        </button>
-
-        <!-- Dropdown -->
-        <div class="absolute right-0 top-full pt-2 w-48 bg-white rounded-lg shadow-lg hidden group-hover:block">
-            <a href="#" class="block px-4 py-3 hover:bg-gray-100">
-                <strong><?= esc($user->username ?? 'Usuario') ?></strong>
-                <div class="text-xs text-gray-500"><?= esc($user->email) ?></div>
-            </a>
-            <a href="<?= url_to('logout') ?>" class="flex items-center gap-2 px-4 py-2 hover:bg-gray-100">
-                <?= Mdi::mdi('logout-variant'); ?> Cerrar sesión
-            </a>
-        </div>
-    </div>
-</div>
+            <div class="hidden md:flex items-center space-x-2">
+                <div class="relative group">
+                    <button class="flex items-center justify-center w-10 h-10 rounded-full bg-[#3B82F6] font-bold text-sm uppercase text-white hover:bg-[#2563EB] shadow-md hover:shadow-lg transition-all">
+                        <?= $user ? substr($user->username ?? $user->email, 0, 1) : '?' ?>
+                    </button>
+                    
+                    <!-- Dropdown Menu -->
+                    <div class="absolute right-0 top-full mt-2 w-56 bg-white rounded-xl shadow-xl border border-blue-100 hidden group-hover:block group-hover:z-50 transition-all">
+                        <div class="p-4 border-b border-blue-100 bg-gradient-to-r from-blue-50 to-cyan-50">
+                            <p class="font-semibold text-gray-800 truncate"><?= esc($user->username ?? 'Usuario') ?></p>
+                            <p class="text-xs text-gray-500 truncate"><?= esc($user->email) ?></p>
+                        </div>
+                        <div class="p-2">
+                            <a href="<?= url_to('logout') ?>" class="flex items-center gap-3 px-4 py-3 text-gray-700 hover:bg-red-50 hover:text-red-600 rounded-lg transition-colors">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><?= Mdi::mdi('logout-variant'); ?></svg>
+                                <span class="font-medium">Cerrar sesión</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
         </div>
     </nav>
 
     <!-- main -->
-    <div class="flex wrapper min-h-screen pt-14">
+    <div class="flex wrapper min-h-screen pt-16">
         <section class="hidden md:block">
             <aside
-                class="w-60 bg-white shadow-sm border-r border-gray-200 sticky top-14 h-full overflow-y-auto">
+                class="w-64 bg-white shadow-lg border-r border-blue-100 sticky top-16 h-full overflow-y-auto">
 
-                <nav class="p-4">
-                    <ul class="space-y-3 text-sm">
+                <nav class="p-6">
+                    <ul class="space-y-2 text-sm">
 
                         <!-- Dashboard -->
                         <li>
                             <a href="<?= base_url('/') ?>"
-                                class="flex items-center gap-2 px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-blue-600 border-r-4 border-blue-600 bg-gray-50 font-semibold">
-                                <i class="mdi mdi-view-dashboard-variant-outline"></i>
-                                <?php echo Mdi::mdi('view-dashboard'); ?>
+                                class="flex items-center gap-3 px-4 py-3 text-gray-700 hover:text-[#2563EB] hover:bg-blue-50 border-l-4 border-[#3B82F6] rounded-r-lg bg-blue-50 font-semibold">
+                                <svg class="w-5 h-5 text-[#3B82F6]" fill="currentColor" viewBox="0 0 24 24"><?php echo Mdi::mdi('view-dashboard'); ?></svg>
                                 <span>Dashboard</span>
                             </a>
                         </li>
@@ -80,15 +90,32 @@
                         <!-- Productos -->
                         <li>
                             <a href="<?= base_url('products') ?>"
-                                class="flex items-center gap-2 px-4 py-2 text-gray-700 hover:bg-gray-100">
-                                <?php echo Mdi::mdi('package'); ?>
+                                class="flex items-center gap-3 px-4 py-3 text-gray-600 hover:text-[#0EA5E9] hover:bg-cyan-50 rounded-lg">
+                                <svg class="w-5 h-5 text-[#0EA5E9]" fill="currentColor" viewBox="0 0 24 24"><?php echo Mdi::mdi('package'); ?></svg>
                                 <span>Productos</span>
                             </a>
-                            <ul class="ml-4 border-l border-gray-200 mt-2 space-y-1">
+                            <ul class="ml-4 mt-1 space-y-1">
                                 <li>
-                                    <a href="<?= base_url(relativePath: 'categories') ?>" class="flex items-center gap-2 px-4 py-1 text-gray-700 hover:bg-gray-100">
-                                        <?php echo Mdi::mdi('mdi-shape-outline'); ?>
-                                        <span>Categorias</span>
+                                    <a href="<?= base_url(relativePath: 'categories') ?>" class="flex items-center gap-3 px-4 py-2 text-gray-500 hover:text-[#6366F1] hover:bg-indigo-50 rounded-lg text-xs">
+                                        <svg class="w-4 h-4 text-[#6366F1]" fill="currentColor" viewBox="0 0 24 24"><?php echo Mdi::mdi('shape-outline'); ?></svg>
+                                        <span>Categorías</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <!-- Almacenes -->
+                        <li>
+                            <a href="<?= base_url('warehouses') ?>"
+                                class="flex items-center gap-3 px-4 py-3 text-gray-600 hover:text-[#0EA5E9] hover:bg-cyan-50 rounded-lg">
+                                <svg class="w-5 h-5 text-[#0EA5E9]" fill="currentColor" viewBox="0 0 24 24"><?php echo Mdi::mdi('warehouse'); ?></svg>
+                                <span>Almacenes</span>
+                            </a>
+                            <ul class="ml-4 mt-1 space-y-1">
+                                <li>
+                                    <a href="<?= base_url(relativePath: 'locations') ?>" class="flex items-center gap-3 px-4 py-2 text-gray-500 hover:text-[#6366F1] hover:bg-indigo-50 rounded-lg text-xs">
+                                        <svg class="w-4 h-4 text-[#6366F1]" fill="currentColor" viewBox="0 0 24 24"><?php echo Mdi::mdi('map-marker-multiple'); ?></svg>
+                                        <span>Ubicaciones</span>
                                     </a>
                                 </li>
                             </ul>
@@ -97,30 +124,17 @@
                         <!-- Movimientos -->
                         <li>
                             <a href="<?= base_url('movements') ?>"
-                                class="flex items-center gap-2 px-4 py-2 text-gray-700 hover:bg-gray-100">
-                                <?php echo Mdi::mdi('swap-horizontal'); ?>
+                                class="flex items-center gap-3 px-4 py-3 text-gray-600 hover:text-[#2563EB] hover:bg-blue-50 rounded-lg">
+                                <svg class="w-5 h-5 text-[#2563EB]" fill="currentColor" viewBox="0 0 24 24"><?php echo Mdi::mdi('swap-horizontal'); ?></svg>
                                 <span>Movimientos</span>
                             </a>
-                            <ul class="ml-4 border-l border-gray-200 mt-2 space-y-1">
-                                <li>
-                                    <a href="<?= base_url(relativePath: 'locations') ?>" class="flex items-center gap-2 px-4 py-1 text-gray-700 hover:bg-gray-100">
-                                        <?php echo Mdi::mdi('map-marker-multiple'); ?>
-                                        <span>Ubicaciones</span>
-                                    </a>
-                                    <a href="<?= base_url(relativePath: 'warehouses') ?>" class="flex items-center gap-2 px-4 py-1 text-gray-700 hover:bg-gray-100">
-                                        <?php echo Mdi::mdi('warehouse'); ?>
-                                        <span>Almacenes</span>
-                                    </a>
-                                </li>
-                            </ul>
                         </li>
 
                         <!-- Existencias -->
                         <li>
                             <a href="<?= base_url('stocks') ?>"
-                                class="flex items-center gap-2 px-4 py-2 text-gray-700 hover:bg-gray-100">
-                                <i class="mdi mdi-account-multiple"></i>
-                                <?php echo Mdi::mdi('counter'); ?>
+                                class="flex items-center gap-3 px-4 py-3 text-gray-600 hover:text-[#059669] hover:bg-emerald-50 rounded-lg">
+                                <svg class="w-5 h-5 text-[#059669]" fill="currentColor" viewBox="0 0 24 24"><?php echo Mdi::mdi('counter'); ?></svg>
                                 <span>Existencias</span>
                             </a>
                         </li>
@@ -128,8 +142,8 @@
                 </nav>
             </aside>
         </section>
-        <main class="bg-white flex-1 p-[30px]">
-            <div>
+        <main class="bg-transparent flex-1 p-8">
+            <div class="bg-white rounded-2xl shadow-md p-8">
                 <?php echo ($this->renderSection("content")); ?>
             </div>
         </main>
