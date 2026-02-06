@@ -45,9 +45,25 @@
 
             <!-- Menu -->
             <div class="hidden md:flex items-center space-x-2">
-                <button class="flex items-center justify-center w-10 h-10 rounded-full bg-[#3B82F6] font-bold text-sm uppercase text-white hover:bg-[#2563EB] shadow-md">
-                    <?= $user ? substr($user->username ?? $user->email, 0, 1) : '?' ?>
-                </button>
+                <div class="relative group">
+                    <button class="flex items-center justify-center w-10 h-10 rounded-full bg-[#3B82F6] font-bold text-sm uppercase text-white hover:bg-[#2563EB] shadow-md hover:shadow-lg transition-all">
+                        <?= $user ? substr($user->username ?? $user->email, 0, 1) : '?' ?>
+                    </button>
+                    
+                    <!-- Dropdown Menu -->
+                    <div class="absolute right-0 top-full mt-2 w-56 bg-white rounded-xl shadow-xl border border-blue-100 hidden group-hover:block group-hover:z-50 transition-all">
+                        <div class="p-4 border-b border-blue-100 bg-gradient-to-r from-blue-50 to-cyan-50">
+                            <p class="font-semibold text-gray-800 truncate"><?= esc($user->username ?? 'Usuario') ?></p>
+                            <p class="text-xs text-gray-500 truncate"><?= esc($user->email) ?></p>
+                        </div>
+                        <div class="p-2">
+                            <a href="<?= url_to('logout') ?>" class="flex items-center gap-3 px-4 py-3 text-gray-700 hover:bg-red-50 hover:text-red-600 rounded-lg transition-colors">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><?= Mdi::mdi('logout-variant'); ?></svg>
+                                <span class="font-medium">Cerrar sesión</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
 
         </div>
