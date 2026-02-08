@@ -1,19 +1,41 @@
+<?php 
+use \Mdi\Mdi;
+Mdi::withIconsPath(__DIR__ . '/../../../node_modules/@mdi/svg/svg/'); 
+?>
+
 <?php echo $this->extend('templates/layout'); ?>
 <?php echo $this->section('content'); ?>
 
 <div class="max-w-5xl mx-auto">
 
     <!-- Encabezado -->
-    <div class="flex justify-between items-center p-4">
-        <div class="flex flex-col">
-            <h4 class="text-xl font-semibold text-gray-800">Crear movimiento</h4>
-        </div>
+    <div class="bg-gradient-to-r from-purple-50 to-violet-50 rounded-2xl p-8 border-l-4 border-[#7C3AED] shadow-md mb-8">
+        <div class="flex items-center justify-between">
+            <div>
+                <h1 class="text-4xl font-bold text-purple-700">Crear Movimiento</h1>
+                <p class="text-gray-600 mt-2 flex items-center gap-2">
+                    <svg class="w-5 h-5 text-purple-500" fill="currentColor" viewBox="0 0 24 24"><?= Mdi::mdi('plus-circle'); ?></svg>
+                    Registre un nuevo movimiento de inventario
+                </p>
+            </div>
+            <div class="flex gap-2">
+                <button type="submit" form="formCreateMovement"
+                    class="flex items-center gap-2 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white px-6 py-3 rounded-xl shadow-lg hover:shadow-xl font-semibold transition-all duration-300 transform hover:scale-105">
+                    <?php echo Mdi::mdi('check-circle'); ?>
+                    Guardar
+                </button>
 
-        <div class="flex gap-2">
-            <button type="submit" form="formCreateMovement" class="px-4 py-2 bg-green-600 text-white text-sm rounded-lg hover:bg-green-700 transition">Guardar</button>
-            <a href="<?= base_url('movements/') ?>"class="px-4 py-2 bg-gray-500 text-white text-sm rounded-lg hover:bg-gray-600 transition">Descartar</a>
+                <a href="<?= base_url('movements/') ?>"
+                    class="flex items-center gap-2 bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white px-6 py-3 rounded-xl shadow-lg hover:shadow-xl font-semibold transition-all duration-300 transform hover:scale-105">
+                    <?php echo Mdi::mdi('trash-can'); ?>
+                    Descartar
+                </a>
+            </div>
         </div>
     </div>
+
+    <!-- Contenedor del Formulario -->
+    <div class="bg-white rounded-2xl shadow-xl border-t-4 border-purple-500 p-8">
 
     <!-- Card -->
     <div class="bg-white rounded-xl shadow p-6 mt-4">
