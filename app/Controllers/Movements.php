@@ -24,7 +24,7 @@ class Movements extends BaseController
     public function new(): string
     {
         $locationModel = new Location();
-        $locations = $locationModel->getLocationsWithStorage();
+        $locations = $locationModel->getLocationsWithWarehouse();
 
         $movementTypeModel = new MovementType();
         $movementtypes = $movementTypeModel->findAll();

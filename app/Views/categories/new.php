@@ -1,28 +1,47 @@
+<?php 
+use \Mdi\Mdi;
+Mdi::withIconsPath(__DIR__ . '/../../../node_modules/@mdi/svg/svg/'); 
+?>
+
 <?php echo $this->extend('templates/layout'); ?>
 <?php echo $this->section('content'); ?>
 
-    <div class="max-w-5xl mx-auto"> <!-- Encabezado -->
-    <div class="flex justify-between items-center p-4">
-        <h4 class="text-xl font-semibold text-gray-800">Crear categoria</h4>
+    <div class="max-w-5xl mx-auto">
+    
+    <!-- Encabezado -->
+    <div class="bg-gradient-to-r from-indigo-50 to-purple-50 rounded-2xl p-8 border-l-4 border-[#6366F1] shadow-md mb-8">
+        <div class="flex items-center justify-between">
+            <div>
+                <h1 class="text-4xl font-bold text-indigo-700">Crear Categoría</h1>
+                <p class="text-gray-600 mt-2 flex items-center gap-2">
+                    <svg class="w-5 h-5 text-indigo-500" fill="currentColor" viewBox="0 0 24 24"><?= Mdi::mdi('plus-circle'); ?></svg>
+                    Agregue una nueva categoría de productos
+                </p>
+            </div>
+            <div class="flex gap-2">
+                <button type="submit" form="formCreateCategory" class="flex items-center gap-2 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white px-6 py-3 rounded-xl shadow-lg hover:shadow-xl font-semibold transition-all duration-300 transform hover:scale-105">
+                    <?php echo Mdi::mdi('check-circle'); ?>
+                    Guardar
+                </button>
 
-        <div class="flex gap-2">
-            <button type="submit" form="formCreateCategory" class="px-4 py-2 bg-green-600 text-white text-sm rounded-lg hover:bg-green-700 transition">
-                Guardar
-            </button>
-
-            <a href="<?= base_url('categories/') ?>" class="px-4 py-2 bg-gray-500 text-white text-sm rounded-lg hover:bg-gray-600 transition">
-                Descartar
-            </a>
+                <a href="<?= base_url('categories/') ?>" class="flex items-center gap-2 bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white px-6 py-3 rounded-xl shadow-lg hover:shadow-xl font-semibold transition-all duration-300 transform hover:scale-105">
+                    <?php echo Mdi::mdi('trash-can'); ?>
+                    Descartar
+                </a>
+            </div>
         </div>
     </div>
 
-    <!-- Card -->
-    <div class="bg-white rounded-xl shadow p-6 mt-4">
-        <form id="formCreateCategory" action="<?= base_url('categories/save') ?>" method="post" autocomplete="off" class="grid grid-cols-1 md:grid-cols-12 gap-4">
-            <!-- Producto -->
+    <!-- Contenedor del Formulario -->
+    <div class="bg-white rounded-2xl shadow-xl border-t-4 border-indigo-500 p-8">
+        <form id="formCreateCategory" action="<?= base_url('categories/save') ?>" method="post" autocomplete="off" class="grid grid-cols-1 md:grid-cols-12 gap-6">
+            <!-- Nombre de la Categoría -->
             <div class="md:col-span-12">
-                <label class="block text-sm font-medium text-gray-700 mb-1">Nombre de la Categoria</label>
-                <input type="text" name="nombre" placeholder="Ropa" value="<?= 0 ?>" class="w-full rounded-lg border px-3 py-2 focus:outline-none focus:ring-2">
+                <label class="block text-sm font-bold text-gray-700 mb-2 flex items-center gap-2">
+                    <svg class="w-4 h-4 text-indigo-500" fill="currentColor" viewBox="0 0 24 24"><?= Mdi::mdi('tag'); ?></svg>
+                    Nombre de la Categoría
+                </label>
+                <input type="text" name="nombre" placeholder="Ej: Ropa, Electrónica, Alimentos..." value="<?= old('nombre') ?>" class="w-full rounded-xl border-2 px-4 py-3 focus:outline-none transition-all duration-300 border-gray-200 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200">
             </div>
         </form>
     </div>

@@ -1,125 +1,165 @@
+<?php 
+use \Mdi\Mdi;
+Mdi::withIconsPath(__DIR__ . '/../../../node_modules/@mdi/svg/svg/'); 
+?>
+
 <?php echo $this->extend('templates/layout'); ?>
 <?php echo $this->section('content'); ?>
 
-    <div class="max-w-5xl mx-auto"> <!-- Encabezado -->
-    <div class="flex justify-between items-center p-4">
-        <h4 class="text-xl font-semibold text-gray-800">Crear producto</h4>
-
-        <div class="flex gap-2">
-            <button type="submit" form="formCreateProduct" class="px-4 py-2 bg-green-600 text-white text-sm rounded-lg hover:bg-green-700 transition">
-                Guardar
-            </button>
-
-            <a href="<?= base_url('products/') ?>" class="px-4 py-2 bg-gray-500 text-white text-sm rounded-lg hover:bg-gray-600 transition">
-                Descartar
-            </a>
+    <div class="max-w-5xl mx-auto">
+    
+    <!-- Encabezado -->
+    <div class="bg-gradient-to-r from-blue-50 to-cyan-50 rounded-2xl p-8 border-l-4 border-[#3B82F6] shadow-md mb-8">
+        <div class="flex items-center justify-between">
+            <div>
+                <h1 class="text-4xl font-bold text-blue-700">Crear Producto</h1>
+                <p class="text-gray-600 mt-2 flex items-center gap-2">
+                    <svg class="w-5 h-5 text-blue-500" fill="currentColor" viewBox="0 0 24 24"><?= Mdi::mdi('plus-circle'); ?></svg>
+                    Agregue un nuevo producto al catálogo
+                </p>
+            </div>
+            <div class="flex gap-2">
+                <button type="submit" form="formCreateProduct" class="flex items-center gap-2 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white px-6 py-3 rounded-xl shadow-lg hover:shadow-xl font-semibold transition-all duration-300 transform hover:scale-105">
+                    <?php echo Mdi::mdi('check-circle'); ?>
+                    Guardar
+                </button>
+                <a href="<?= base_url('products/') ?>" class="flex items-center gap-2 bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white px-6 py-3 rounded-xl shadow-lg hover:shadow-xl font-semibold transition-all duration-300 transform hover:scale-105">
+                    <?php echo Mdi::mdi('trash-can'); ?>
+                    Descartar
+                </a>
+            </div>
         </div>
     </div>
 
-    <!-- Card -->
-    <div class="bg-white rounded-xl shadow p-6 mt-4">
+    <!-- Contenedor del Formulario -->
+    <div class="bg-white rounded-2xl shadow-xl border-t-4 border-blue-500 p-8">
 
         <form
-            id="formCreateProduct" action="<?= base_url('products/save') ?>" method="post" autocomplete="off" class="grid grid-cols-1 md:grid-cols-12 gap-4">
+            id="formCreateProduct" action="<?= base_url('products/save') ?>" method="post" autocomplete="off" class="grid grid-cols-1 md:grid-cols-12 gap-6">
 
             <!-- Producto -->
             <div class="md:col-span-12">
-                <label class="block text-sm font-medium text-gray-700 mb-1">Producto</label>
+                <label class="block text-sm font-bold text-gray-700 mb-2 flex items-center gap-2">
+                    <svg class="w-4 h-4 text-blue-500" fill="currentColor" viewBox="0 0 24 24"><?= Mdi::mdi('package'); ?></svg>
+                    Nombre del Producto
+                </label>
                 <input
-                type="text" name="nombre" placeholder="Bicicleta de Montaña" value="<?= set_value('nombre') ?>" class="w-full rounded-lg border px-3 py-2 focus:outline-none focus:ring-2
+                type="text" name="nombre" placeholder="Ej: Bicicleta de Montaña" value="<?= set_value('nombre') ?>" class="w-full rounded-xl border-2 px-4 py-3 focus:outline-none transition-all duration-300
                                            <?= isset($validation) && $validation->hasError('nombre')
-                                               ? 'border-red-500 focus:ring-red-400'
-                                               : (old('nombre') ? 'border-green-500 focus:ring-green-400' : 'border-gray-300 focus:ring-blue-400') ?>">
+                                               ? 'border-red-500 focus:border-red-600 focus:ring-2 focus:ring-red-200'
+                                               : (old('nombre') ? 'border-green-500 focus:border-green-600 focus:ring-2 focus:ring-green-200' : 'border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200') ?>">
 
                 <?php if (isset($validation) && $validation->hasError('nombre')): ?>
-                    <p class="text-sm text-red-600 mt-1"><?= $validation->getError('nombre') ?></p>
+                    <p class="text-sm text-red-600 mt-2 flex items-center gap-1"><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><?= Mdi::mdi('alert-circle'); ?></svg><?= $validation->getError('nombre') ?></p>
                 <?php endif; ?>
             </div>
 
             <!-- Valor -->
             <div class="md:col-span-4">
-                <label class="block text-sm font-medium text-gray-700 mb-1">Valor</label>
+                <label class="block text-sm font-bold text-gray-700 mb-2 flex items-center gap-2">
+                    <svg class="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 24 24"><?= Mdi::mdi('currency-usd'); ?></svg>
+                    Valor de Venta
+                </label>
                 <input
-                type="number" name="valor" value="<?= set_value('valor', 0) ?>" class="w-full rounded-lg border px-3 py-2 focus:outline-none focus:ring-2
+                type="number" step="0.01" name="valor" value="<?= set_value('valor', 0) ?>" class="w-full rounded-xl border-2 px-4 py-3 focus:outline-none transition-all duration-300
                                            <?= isset($validation) && $validation->hasError('valor')
-                                               ? 'border-red-500 focus:ring-red-400'
-                                               : (old('valor') ? 'border-green-500 focus:ring-green-400' : 'border-gray-300 focus:ring-blue-400') ?>">
+                                               ? 'border-red-500 focus:border-red-600 focus:ring-2 focus:ring-red-200'
+                                               : (old('valor') ? 'border-green-500 focus:border-green-600 focus:ring-2 focus:ring-green-200' : 'border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200') ?>">
 
                 <?php if (isset($validation) && $validation->hasError('valor')): ?>
-                    <p class="text-sm text-red-600 mt-1"><?= $validation->getError('valor') ?></p>
+                    <p class="text-sm text-red-600 mt-2 flex items-center gap-1"><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><?= Mdi::mdi('alert-circle'); ?></svg><?= $validation->getError('valor') ?></p>
                 <?php endif; ?>
             </div>
 
             <!-- Costo -->
             <div class="md:col-span-4">
-                <label class="block text-sm font-medium text-gray-700 mb-1">Costo</label>
+                <label class="block text-sm font-bold text-gray-700 mb-2 flex items-center gap-2">
+                    <svg class="w-4 h-4 text-orange-500" fill="currentColor" viewBox="0 0 24 24"><?= Mdi::mdi('cash'); ?></svg>
+                    Costo
+                </label>
                 <input
-                type="number" name="costo" value="<?= set_value('costo', 0) ?>" class="w-full rounded-lg border px-3 py-2 focus:outline-none focus:ring-2
+                type="number" step="0.01" name="costo" value="<?= set_value('costo', 0) ?>" class="w-full rounded-xl border-2 px-4 py-3 focus:outline-none transition-all duration-300
                                            <?= isset($validation) && $validation->hasError('costo')
-                                               ? 'border-red-500 focus:ring-red-400'
-                                               : (old('costo') ? 'border-green-500 focus:ring-green-400' : 'border-gray-300 focus:ring-blue-400') ?>">
+                                               ? 'border-red-500 focus:border-red-600 focus:ring-2 focus:ring-red-200'
+                                               : (old('costo') ? 'border-green-500 focus:border-green-600 focus:ring-2 focus:ring-green-200' : 'border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200') ?>">
 
                 <?php if (isset($validation) && $validation->hasError('costo')): ?>
-                    <p class="text-sm text-red-600 mt-1"><?= $validation->getError('costo') ?></p>
+                    <p class="text-sm text-red-600 mt-2 flex items-center gap-1"><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><?= Mdi::mdi('alert-circle'); ?></svg><?= $validation->getError('costo') ?></p>
                 <?php endif; ?>
             </div>
 
             <!-- SKU -->
             <div class="md:col-span-4">
-                <label class="block text-sm font-medium text-gray-700 mb-1">SKU</label>
+                <label class="block text-sm font-bold text-gray-700 mb-2 flex items-center gap-2">
+                    <svg class="w-4 h-4 text-purple-500" fill="currentColor" viewBox="0 0 24 24"><?= Mdi::mdi('barcode'); ?></svg>
+                    SKU
+                </label>
                 <input
-                type="text" name="sku" value="<?= set_value('sku') ?>" class="w-full rounded-lg border px-3 py-2 focus:outline-none focus:ring-2
+                type="text" name="sku" value="<?= set_value('sku') ?>" class="w-full rounded-xl border-2 px-4 py-3 focus:outline-none transition-all duration-300
                                            <?= isset($validation) && $validation->hasError('sku')
-                                               ? 'border-red-500 focus:ring-red-400'
-                                               : (old('sku') ? 'border-green-500 focus:ring-green-400' : 'border-gray-300 focus:ring-blue-400') ?>">
+                                               ? 'border-red-500 focus:border-red-600 focus:ring-2 focus:ring-red-200'
+                                               : (old('sku') ? 'border-green-500 focus:border-green-600 focus:ring-2 focus:ring-green-200' : 'border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200') ?>">
 
                 <?php if (isset($validation) && $validation->hasError('sku')): ?>
-                    <p class="text-sm text-red-600 mt-1"><?= $validation->getError('sku') ?></p>
+                    <p class="text-sm text-red-600 mt-2 flex items-center gap-1"><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><?= Mdi::mdi('alert-circle'); ?></svg><?= $validation->getError('sku') ?></p>
                 <?php endif; ?>
             </div>
 
             <!-- Código de barras -->
             <div class="md:col-span-4">
-                <label class="block text-sm font-medium text-gray-700 mb-1">Código de Barras</label>
+                <label class="block text-sm font-bold text-gray-700 mb-2 flex items-center gap-2">
+                    <svg class="w-4 h-4 text-indigo-500" fill="currentColor" viewBox="0 0 24 24"><?= Mdi::mdi('barcode-scan'); ?></svg>
+                    Código de Barras
+                </label>
                 <input
-                type="text" name="codigo_barras" value="<?= set_value('codigo_barras') ?>" class="w-full rounded-lg border px-3 py-2 focus:outline-none focus:ring-2
+                type="text" name="codigo_barras" value="<?= set_value('codigo_barras') ?>" class="w-full rounded-xl border-2 px-4 py-3 focus:outline-none transition-all duration-300
                                            <?= isset($validation) && $validation->hasError('codigo_barras')
-                                               ? 'border-red-500 focus:ring-red-400'
-                                               : (old('codigo_barras') ? 'border-green-500 focus:ring-green-400' : 'border-gray-300 focus:ring-blue-400') ?>">
+                                               ? 'border-red-500 focus:border-red-600 focus:ring-2 focus:ring-red-200'
+                                               : (old('codigo_barras') ? 'border-green-500 focus:border-green-600 focus:ring-2 focus:ring-green-200' : 'border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200') ?>">
 
                 <?php if (isset($validation) && $validation->hasError('codigo_barras')): ?>
-                    <p class="text-sm text-red-600 mt-1"><?= $validation->getError('codigo_barras') ?></p>
+                    <p class="text-sm text-red-600 mt-2 flex items-center gap-1"><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><?= Mdi::mdi('alert-circle'); ?></svg><?= $validation->getError('codigo_barras') ?></p>
                 <?php endif; ?>
             </div>
 
             <!-- Categoría -->
             <div class="md:col-span-4">
-                <label class="block text-sm font-medium text-gray-700 mb-1">Categoría</label>
+                <label class="block text-sm font-bold text-gray-700 mb-2 flex items-center gap-2">
+                    <svg class="w-4 h-4 text-pink-500" fill="currentColor" viewBox="0 0 24 24"><?= Mdi::mdi('tag'); ?></svg>
+                    Categoría
+                </label>
                 <select
-                    name="categoria" class="w-full rounded-lg border px-3 py-2 focus:outline-none focus:ring-2
+                    name="categoria" class="w-full rounded-xl border-2 px-4 py-3 focus:outline-none transition-all duration-300 bg-white cursor-pointer
                                                 <?= isset($validation) && $validation->hasError('categoria')
-                                                    ? 'border-red-500 focus:ring-red-400'
-                                                    : (old('categoria') ? 'border-green-500 focus:ring-green-400' : 'border-gray-300 focus:ring-blue-400') ?>">
-
+                                                    ? 'border-red-500 focus:border-red-600 focus:ring-2 focus:ring-red-200'
+                                                    : (old('categoria') ? 'border-green-500 focus:border-green-600 focus:ring-2 focus:ring-green-200' : 'border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200') ?>">
+                    <option value="">-- Seleccionar Categoría --</option>
                     <?php foreach ($categories as $category): ?>
                         <option
-                            value="<?= esc($category->id); ?>"><?= esc($category->nombre); ?>
+                            value="<?= esc($category->id); ?>" <?= old('categoria') == $category->id ? 'selected' : '' ?>><?= esc($category->nombre); ?>
                         </option>
                     <?php endforeach; ?>
                 </select>
 
                 <?php if (isset($validation) && $validation->hasError('categoria')): ?>
-                    <p class="text-sm text-red-600 mt-1"><?= $validation->getError('categoria') ?></p>
+                    <p class="text-sm text-red-600 mt-2 flex items-center gap-1"><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><?= Mdi::mdi('alert-circle'); ?></svg><?= $validation->getError('categoria') ?></p>
                 <?php endif; ?>
             </div>
 
             <!-- Descripción -->
             <div class="md:col-span-12">
-                <label class="block text-sm font-medium text-gray-700 mb-1">Descripción</label>
-                <textarea name="descripcion" rows="5" class="w-full rounded-lg border px-3 py-2 focus:outline-none focus:ring-2
+                <label class="block text-sm font-bold text-gray-700 mb-2 flex items-center gap-2">
+                    <svg class="w-4 h-4 text-teal-500" fill="currentColor" viewBox="0 0 24 24"><?= Mdi::mdi('text-box'); ?></svg>
+                    Descripción
+                </label>
+                <textarea name="descripcion" rows="5" placeholder="Descripción detallada del producto..." class="w-full rounded-xl border-2 px-4 py-3 focus:outline-none transition-all duration-300 resize-none
                                               <?= isset($validation) && $validation->hasError('descripcion')
-                                                  ? 'border-red-500 focus:ring-red-400'
-                                                  : (old('descripcion') ? 'border-green-500 focus:ring-green-400' : 'border-gray-300 focus:ring-blue-400') ?>"><?= set_value('descripcion') ?></textarea>
+                                                  ? 'border-red-500 focus:border-red-600 focus:ring-2 focus:ring-red-200'
+                                                  : (old('descripcion') ? 'border-green-500 focus:border-green-600 focus:ring-2 focus:ring-green-200' : 'border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200') ?>"><?= set_value('descripcion') ?></textarea>
+                
+                <?php if (isset($validation) && $validation->hasError('descripcion')): ?>
+                    <p class="text-sm text-red-600 mt-2 flex items-center gap-1"><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><?= Mdi::mdi('alert-circle'); ?></svg><?= $validation->getError('descripcion') ?></p>
+                <?php endif; ?>
             </div>
 
         </form>

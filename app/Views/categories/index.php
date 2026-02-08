@@ -11,7 +11,7 @@ Mdi::withIconsPath(__DIR__ . '/../../../node_modules/@mdi/svg/svg/');
 <div class="bg-gradient-to-r from-indigo-50 to-purple-50 rounded-2xl p-8 border-l-4 border-[#6366F1] shadow-md mb-8">
     <div class="flex items-center justify-between">
         <div>
-            <h1 class="text-4xl font-bold bg-gradient-to-r from-[#6366F1] to-[#8B5CF6] bg-clip-text text-transparent">Categorías</h1>
+            <h1 class="text-4xl font-bold text-indigo-700">Categorías</h1>
             <p class="text-gray-600 mt-2 flex items-center gap-2">
                 <svg class="w-5 h-5 text-purple-500" fill="currentColor" viewBox="0 0 24 24"><?= Mdi::mdi('shape-outline'); ?></svg>
                 Gestión de categorías de productos

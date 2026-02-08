@@ -11,7 +11,7 @@ Mdi::withIconsPath(__DIR__ . '/../../../node_modules/@mdi/svg/svg/');
 <div class="bg-gradient-to-r from-blue-50 to-cyan-50 rounded-2xl p-8 border-l-4 border-[#3B82F6] shadow-md mb-8">
     <div class="flex items-center justify-between">
         <div>
-            <h1 class="text-4xl font-bold bg-gradient-to-r from-[#3B82F6] to-[#0EA5E9] bg-clip-text text-transparent">Productos</h1>
+            <h1 class="text-4xl font-bold text-blue-700">Productos</h1>
             <p class="text-gray-600 mt-2 flex items-center gap-2">
                 <svg class="w-5 h-5 text-cyan-500" fill="currentColor" viewBox="0 0 24 24"><?= Mdi::mdi('package'); ?></svg>
                 Gestión de productos y catálogo

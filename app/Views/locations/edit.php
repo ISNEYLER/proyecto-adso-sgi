@@ -1,27 +1,41 @@
+<?php 
+use \Mdi\Mdi;
+Mdi::withIconsPath(__DIR__ . '/../../../node_modules/@mdi/svg/svg/'); 
+?>
+
 <?php echo $this->extend('templates/layout'); ?>
 <?php echo $this->section('content'); ?>
 
 <div class="max-w-5xl mx-auto">
 
     <!-- Encabezado -->
-    <div class="flex justify-between items-center p-4">
-        <h4 class="text-xl font-semibold text-gray-800">Editar Ubicacion</h4>
+    <div class="bg-gradient-to-r from-emerald-50 to-teal-50 rounded-2xl p-8 border-l-4 border-[#059669] shadow-md mb-8">
+        <div class="flex items-center justify-between">
+            <div>
+                <h1 class="text-4xl font-bold text-emerald-700">Editar Ubicación</h1>
+                <p class="text-gray-600 mt-2 flex items-center gap-2">
+                    <svg class="w-5 h-5 text-emerald-500" fill="currentColor" viewBox="0 0 24 24"><?= Mdi::mdi('pencil'); ?></svg>
+                    Actualice los detalles de la ubicación
+                </p>
+            </div>
+            <div class="flex gap-2">
+                <button type="submit" form="formCreateLocation"
+                    class="flex items-center gap-2 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white px-6 py-3 rounded-xl shadow-lg hover:shadow-xl font-semibold transition-all duration-300 transform hover:scale-105">
+                    <?php echo Mdi::mdi('check-circle'); ?>
+                    Guardar
+                </button>
 
-        <div class="flex gap-2">
-            <button type="submit" form="formCreateLocation"
-                class="px-4 py-2 bg-green-600 text-white text-sm rounded-lg hover:bg-green-700 transition">
-                Guardar
-            </button>
-
-            <a href="<?= base_url('locations/') ?>"
-                class="px-4 py-2 bg-gray-500 text-white text-sm rounded-lg hover:bg-gray-600 transition">
-                Descartar
-            </a>
+                <a href="<?= base_url('locations/') ?>"
+                    class="flex items-center gap-2 bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white px-6 py-3 rounded-xl shadow-lg hover:shadow-xl font-semibold transition-all duration-300 transform hover:scale-105">
+                    <?php echo Mdi::mdi('trash-can'); ?>
+                    Descartar
+                </a>
+            </div>
         </div>
     </div>
 
-    <!-- Card -->
-    <div class="bg-white rounded-xl shadow p-6 mt-4">
+    <!-- Contenedor del Formulario -->
+    <div class="bg-white rounded-2xl shadow-xl border-t-4 border-emerald-500 p-8">
         <form id="formCreateLocation" action="<?= base_url('locations/update/'.$location->id) ?>" method="post" autocomplete="off" class="grid grid-cols-1 md:grid-cols-12 gap-4">
             <!-- Almacén -->
             <div class="md:col-span-4">
