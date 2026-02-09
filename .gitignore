@@ -152,3 +152,6 @@ dist-ssr
 
 docker-compose.yml
 Dockerfile
+apache.conf
+entrypoint.sh
+writable/
