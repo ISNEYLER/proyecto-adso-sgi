@@ -49,45 +49,46 @@ Mdi::withIconsPath(__DIR__ . '/../../../node_modules/@mdi/svg/svg/');
 <?php endif; ?>
 
 <div class="bg-white rounded-2xl shadow-lg border-t-4 border-blue-400 overflow-hidden hover:shadow-xl transition-shadow">
-  <table class="min-w-full text-sm">
-    <thead class="bg-gradient-to-r from-blue-50 to-cyan-50 border-b-2 border-blue-200">
-      <tr>
-        <th class="px-6 py-4 text-left font-bold text-blue-900 uppercase tracking-wide">Producto</th>
-        <th class="px-6 py-4 text-center font-bold text-blue-900 uppercase tracking-wide">Precio</th>
-        <th class="px-6 py-4 text-center font-bold text-blue-900 uppercase tracking-wide">Costo</th>
-        <th class="px-6 py-4 text-center font-bold text-blue-900 uppercase tracking-wide">Cantidad</th>
-        <th class="px-6 py-4 text-center font-bold text-blue-900 uppercase tracking-wide">Acciones</th>
-      </tr>
-    </thead>
-    <tbody>
-      <?php foreach ($products as $producto): ?>
-        <tr class="border-b border-blue-100 hover:bg-blue-50 transition-colors duration-200">
-          <td class="px-6 py-4 text-left">
-            <div class="flex items-center gap-3">
-              <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-400 to-cyan-400 flex items-center justify-center text-white shadow-md">
-                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><?= Mdi::mdi('package'); ?></svg>
-              </div>
-              <span class="font-semibold text-gray-800"><?= esc($producto->nombre); ?></span>
+  <div class="overflow-x-auto">
+    <table class="w-full text-sm md:text-base">
+      <thead class="bg-gradient-to-r from-blue-50 to-cyan-50 border-b-2 border-blue-200 text-xs md:text-sm">
+        <tr>
+          <th class="px-3 md:px-6 py-3 md:py-4 text-left font-bold text-blue-900 uppercase tracking-wide whitespace-nowrap">Producto</th>
+          <th class="px-3 md:px-6 py-3 md:py-4 text-center font-bold text-blue-900 uppercase tracking-wide whitespace-nowrap">Precio</th>
+          <th class="px-3 md:px-6 py-3 md:py-4 text-center font-bold text-blue-900 uppercase tracking-wide whitespace-nowrap">Costo</th>
+          <th class="px-3 md:px-6 py-3 md:py-4 text-center font-bold text-blue-900 uppercase tracking-wide whitespace-nowrap">Cantidad</th>
+          <th class="px-3 md:px-6 py-3 md:py-4 text-center font-bold text-blue-900 uppercase tracking-wide whitespace-nowrap">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php foreach ($products as $producto): ?>
+          <tr class="border-b border-blue-100 hover:bg-blue-50 transition-colors duration-200">
+            <td class="px-3 md:px-6 py-3 md:py-4 text-left">
+              <div class="flex items-center gap-2 md:gap-3">
+                <div class="w-8 h-8 md:w-10 md:h-10 rounded-lg bg-gradient-to-br from-blue-400 to-cyan-400 flex items-center justify-center text-white shadow-md flex-shrink-0">
+                  <svg class="w-4 h-4 md:w-5 md:h-5" fill="currentColor" viewBox="0 0 24 24"><?= Mdi::mdi('package'); ?></svg>
+                </div>
+                <span class="font-semibold text-gray-800 text-xs md:text-base"><?= esc($producto->nombre); ?></span>
             </div>
           </td>
-          <td class="px-6 py-4 text-center">
-            <span class="bg-gradient-to-r from-emerald-100 to-cyan-100 text-emerald-700 px-3 py-1 rounded-full font-bold text-sm">$<?= $producto->valor; ?></span>
+          <td class="px-3 md:px-6 py-3 md:py-4 text-center">
+            <span class="bg-gradient-to-r from-emerald-100 to-cyan-100 text-emerald-700 px-2 md:px-3 py-1 rounded-full font-bold text-xs md:text-sm">$<?= $producto->valor; ?></span>
           </td>
-          <td class="px-6 py-4 text-center">
-            <span class="bg-gradient-to-r from-orange-100 to-yellow-100 text-orange-700 px-3 py-1 rounded-full font-bold text-sm">$<?= $producto->costo; ?></span>
+          <td class="px-3 md:px-6 py-3 md:py-4 text-center">
+            <span class="bg-gradient-to-r from-orange-100 to-yellow-100 text-orange-700 px-2 md:px-3 py-1 rounded-full font-bold text-xs md:text-sm">$<?= $producto->costo; ?></span>
           </td>
-          <td class="px-6 py-4 text-center">
-            <span class="inline-block bg-gradient-to-r from-blue-100 to-indigo-100 text-blue-700 px-3 py-1 rounded-full font-bold text-sm"><?= $producto->cantidad; ?></span>
+          <td class="px-3 md:px-6 py-3 md:py-4 text-center">
+            <span class="inline-block bg-gradient-to-r from-blue-100 to-indigo-100 text-blue-700 px-2 md:px-3 py-1 rounded-full font-bold text-xs md:text-sm"><?= $producto->cantidad; ?></span>
           </td>
-          <td class="px-6 py-4 text-center">
-            <div class="flex items-center justify-center gap-3">
-              <a class="inline-flex items-center gap-1 px-3 py-2 bg-blue-100 text-blue-700 hover:bg-blue-600 hover:text-white rounded-lg transition-all duration-200 font-semibold text-sm" href="<?= base_url('products/edit/' . $producto->id) ?>">
+          <td class="px-3 md:px-6 py-3 md:py-4 text-center">
+            <div class="flex items-center justify-center gap-2 md:gap-3 flex-wrap">
+              <a class="inline-flex items-center gap-1 px-2 md:px-3 py-2 bg-blue-100 text-blue-700 hover:bg-blue-600 hover:text-white rounded-lg transition-all duration-200 font-semibold text-xs md:text-sm whitespace-nowrap" href="<?= base_url('products/edit/' . $producto->id) ?>">
                 <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><?= Mdi::mdi('pencil'); ?></svg>
-                Editar
+                <span class="hidden md:inline">Editar</span>
               </a>
-              <button onclick="openDeleteModal(<?= $producto->id ?>, '<?= esc($producto->nombre) ?>')" class="inline-flex items-center gap-1 px-3 py-2 bg-red-100 text-red-700 hover:bg-red-600 hover:text-white rounded-lg transition-all duration-200 font-semibold text-sm">
+              <button onclick="openDeleteModal(<?= $producto->id ?>, '<?= esc($producto->nombre) ?>')" class="inline-flex items-center gap-1 px-2 md:px-3 py-2 bg-red-100 text-red-700 hover:bg-red-600 hover:text-white rounded-lg transition-all duration-200 font-semibold text-xs md:text-sm whitespace-nowrap">
                 <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><?= Mdi::mdi('delete'); ?></svg>
-                Eliminar
+                <span class="hidden md:inline">Eliminar</span>
               </button>
             </div>
           </td>
@@ -95,7 +96,7 @@ Mdi::withIconsPath(__DIR__ . '/../../../node_modules/@mdi/svg/svg/');
       <?php endforeach; ?>
     </tbody>
   </table>
-</div>
+  </div>
 
 <!-- MODAL ELIMINAR -->
 <div id="deleteModal" class="fixed inset-0 hidden items-center justify-center z-50 backdrop-blur-sm bg-black/30">
